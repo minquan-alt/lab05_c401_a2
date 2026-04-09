@@ -135,3 +135,16 @@ This project represents a complete analysis of deploying cutting-edge AI technol
 ---
 
 *C401_A2 - Vietnam Airlines NEO Chatbot • Powering the future of customer service*
+
+---
+
+## 🧪 Run VinFast Diagnostic UI (Streamlit)
+
+From project `src/`:
+
+```bash
+pip install streamlit
+streamlit run streamlit_app.py
+```
+
+Default app URL: `http://localhost:8501`

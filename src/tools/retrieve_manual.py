@@ -1,88 +1,42 @@
-from langchain_openai import OpenAIEmbeddings
-from langchain_community.vectorstores import FAISS
+from pathlib import Path
 import json
-from langchain_text_splitters import RecursiveCharacterTextSplitter
-
-import os
-from dotenv import load_dotenv
-
-load_dotenv()
-
-OPEN_API_KEY = os.getenv("OPENAI_API_KEY")
-
-
-def get_embeddings():
-    return OpenAIEmbeddings(model="text-embedding-3-small",
-                            api_key=OPEN_API_KEY)
-
-
-def build_vectorstore(chunks, embeddings):
-    return FAISS.from_texts(chunks, embeddings)
-
-
-def load_vectorstore(path, embeddings):
-    return FAISS.load_local(path, embeddings, allow_dangerous_deserialization=True)
-
-def ingest_service_manual(file_path, save_path="faiss_index"):
-
-    with open(file_path, "r", encoding="utf-8") as f:
-        data = json.load(f)
-
-    docs = []
-
-    for d in data:
-        content = d["content"]
-        metadata = d["metadata"]
-
-        docs.append({
-            "text": content,
-            "metadata": metadata
-        })
-
-    splitter = RecursiveCharacterTextSplitter(
-        chunk_size=300,
-        chunk_overlap=50
-    )
-
-    chunks = []
-
-    for d in docs:
-        split_texts = splitter.split_text(d["text"])
-        for chunk in split_texts:
-            chunks.append(chunk)
-
-    embeddings = get_embeddings()
-    vectorstore = build_vectorstore(chunks, embeddings)
-
-    vectorstore.save_local(save_path)
-
-class RAGRetriever:
-
-    def __init__(self, index_path="faiss_index"):
-        self.embeddings = get_embeddings()
-        self.vs = load_vectorstore(index_path, self.embeddings)
-
-    def search(self, query, k=3):
-        docs = self.vs.similarity_search(query, k=k)
-        return [d.page_content for d in docs]
-    
-retriever = RAGRetriever()
-
 from langchain_core.tools import tool
 
+
+SERVICE_MANUAL_FILE = Path(__file__).resolve().parents[1] / "data" / "service_manual.json"
+
+
 @tool
-def retrieve_service_manual_rag(query: str, model: str):
+def retrieve_manual(query: str, model: str, model_year: int, firmware: str):
     """
-    Retrieve relevant service manual documents using semantic search (RAG).
-    Used after identifying root cause to guide repair steps.
+    Retrieve service manual documents by metadata filter and keyword score.
     """
+    with open(SERVICE_MANUAL_FILE, "r", encoding="utf-8") as f:
+        docs = json.load(f)
 
-    global retriever
-    if retriever is None:
-        retriever = RAGRetriever()
+    query_tokens = set(str(query).lower().split())
+    filtered = []
+    for doc in docs:
+        metadata = doc.get("metadata", {})
+        if (
+            metadata.get("model") != model
+            or metadata.get("model_year") != model_year
+            or metadata.get("firmware") != firmware
+        ):
+            continue
 
-    docs = retriever.search(f"{query} for {model}")
+        content = str(doc.get("content", ""))
+        score = sum(1 for token in query_tokens if token in content.lower())
+        filtered.append((score, doc))
 
-    return {
-        "documents": docs
-    }
+    filtered.sort(key=lambda item: item[0], reverse=True)
+    top_docs = []
+    for _, doc in filtered[:3]:
+        top_docs.append(
+            {
+                "content": doc.get("content", ""),
+                "metadata": {"section": doc.get("metadata", {}).get("section", "Unknown")},
+            }
+        )
+
+    return {"documents": top_docs}
