@@ -332,6 +332,15 @@ def agent_node(state: AgentState):
     for iteration in range(MAX_TOOL_ITERATIONS):
         print(f"\n--- Iteration {iteration + 1}/{MAX_TOOL_ITERATIONS} ---")
 
+        # --- LOGIC : Context Refinement ---
+        # Tự động nhắc nhở context xe nếu có dữ liệu trích xuất được từ history
+        user_text = _latest_user_text(messages)
+        ctx = _extract_vehicle_context(user_text)
+        if ctx.get("model"):
+            ctx_hint = f"[Ngữ cảnh hiện tại: Model {ctx['model']}, Year {ctx['model_year'] or 'N/A'}, FW {ctx['firmware'] or 'N/A'}]"
+            if not any(ctx_hint in str(m.content) for m in messages[-2:]):
+                messages.append(HumanMessage(content=f"{ctx_hint} Hãy dựa vào thông tin này để gọi tool chính xác."))
+
         response = llm_with_tools.invoke(messages)
         content = _get_response_content(response)
 
@@ -367,12 +376,19 @@ def agent_node(state: AgentState):
                 tool_result = tool_fn.invoke(tool_args)
                 print(f"📦 Kết quả:\n{tool_result}\n")
 
-                # Nhồi kết quả vào conversation history
-                # Dùng HumanMessage thay vì ToolMessage — Qwen2.5-Coder hiểu format này tốt hơn
+                # --- LOGIC: Xử lý kết quả rỗng ---
+                result_str = str(tool_result)
+                if "[]" in result_str or "{}" in result_str or "not found" in result_str.lower():
+                    feedback_msg = (
+                        f"[Hệ thống]: Kết quả từ {tool_name} không có dữ liệu khớp. "
+                        "Hãy thử một từ khóa khác, hoặc nếu bạn đang tìm mã lỗi (DTC), "
+                        "hãy thử gọi get_diagnostic trực tiếp với triệu chứng để tìm nguyên nhân thay thế."
+                    )
+                else:
+                    feedback_msg = f"[Hệ thống đã gọi {tool_name} và nhận được kết quả]:\n{tool_result}\n\nHãy tiếp tục phân tích theo SPEC."
+
                 messages.append(AIMessage(content=content))
-                messages.append(HumanMessage(
-                    content=f"[Hệ thống đã gọi {tool_name} và nhận được kết quả]:\n{tool_result}\n\nHãy tiếp tục phân tích. Nếu cần thêm thông tin, hãy gọi tool tiếp. Nếu đã đủ, hãy tổng hợp và trả lời người dùng."
-                ))
+                messages.append(HumanMessage(content=feedback_msg))
                 continue  # Lặp lại để LLM xử lý bước tiếp theo
 
         # ── C. Không phát hiện tool call → fallback deterministic pipeline (non-smalltalk) ──
