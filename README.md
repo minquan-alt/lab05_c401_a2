@@ -62,6 +62,7 @@ Transform customer service at Vietnam Airlines by deploying an intelligent 24/7 
 |-----------|------|------|
 | 2A202600361 | **Đỗ Lê Thành Nhân** | Contributing Member |
 | 2A202600304 | **Trần Quang Long** | Contributing Member |
+| 2A202600063 | **Hoàng Bá Minh Quang** | Contributing Member |
 
 ---
 
@@ -69,13 +70,16 @@ Transform customer service at Vietnam Airlines by deploying an intelligent 24/7 
 
 ```
 C401_A2/
+|__ src/                           # source code
 ├── group/                          # Group assignment materials
 │   └── C401_A2_Lab05.jpg          # Product canvas documentation
+│   └── C401_A2_Lab05_Spec.txt       # Product canvas documentation and Spec docs
 ├── individual/                     # Individual contributions
 │   ├── DoLeThanhNhan-2A202600361/
 │   │   └── 2A202600361-DoLeThanhNhan.jpg
 │   └── TranQuangLong-2A02600304/
 │       └── LongPersonal.jpg
+|         ...
 └── README.md                       # This file
 ```
 
