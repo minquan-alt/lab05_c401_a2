@@ -12,7 +12,7 @@ Chatbot hỗ trợ Kỹ thuật viên (KTV) nhập thông tin xe (Model, Firmwar
 
 ## Tools
 - UI: Streamlit (Python web app) / Terminal Console.
-- AI: Google Gemini 2.0 Flash (via Google AI Studio)
+- AI: Qwen2.5-Coder (main), Google Gemini 2.0 Flash (fallback)
 - Prompt: System prompt định hướng "Safety-first" + Mock Database (các file JSON giả lập Lịch sử chẩn đoán và Service Manual của xe điện VF)
 
 ## Phân công
