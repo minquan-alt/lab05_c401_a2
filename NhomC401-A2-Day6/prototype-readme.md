@@ -25,4 +25,4 @@ Thông qua mã máy, triệu chứng và các thông tin liên quan, Chatbot đ�
 | Nhân |   |  |
 | Tài |User Stories, agent.py|SPEC, agent.py|
 | Quân |User Stories, tool get_diagnostic|SPEC, tools.py|
-| Huy |   |   |
+| Huy |Metrics & Eval, System Prompt|SPEC, system_prompt.txt|
