@@ -68,7 +68,6 @@ class RAGRetriever:
     
 retriever = RAGRetriever()
 
-
 from langchain_core.tools import tool
 
 @tool
