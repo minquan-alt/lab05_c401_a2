@@ -1,11 +1,25 @@
-from tools import calculate_budget, search_flights, search_hotels
+from tools import (
+    validate_input,
+    get_repair_history,
+    get_diagnostic,
+    compute_confidence,
+    retrieve_manual,
+)
 
 # Tools list for LLM binding
-TOOLS = [search_flights, search_hotels, calculate_budget]
+TOOLS = [
+    validate_input,
+    get_repair_history,
+    get_diagnostic,
+    compute_confidence,
+    retrieve_manual,
+]
 
 # Dispatch table for execution by name
 TOOL_MAP = {
-    "search_flights": search_flights,
-    "search_hotels": search_hotels,
-    "calculate_budget": calculate_budget,
+    "validate_input": validate_input,
+    "get_repair_history": get_repair_history,
+    "get_diagnostic": get_diagnostic,
+    "compute_confidence": compute_confidence,
+    "retrieve_manual": retrieve_manual,
 }

@@ -147,7 +147,7 @@ graph = builder.compile()
 # 6. Chat loop
 if __name__ == "__main__":
     print("=" * 60)
-    print("TravelBuddy – Trợ lý Du lịch Thông minh")
+    print("VinFast Service Copilot – Symptom → DTC → Repair")
     print("      Gõ 'quit' để thoát")
     print("=" * 60)
 
@@ -158,10 +158,9 @@ if __name__ == "__main__":
         if user_input.lower() in ("quit", "exit", "q"):
             break
 
-        print("\nTravelBuddy đang suy nghĩ...")
+        print("\nCopilot đang phân tích chẩn đoán...")
         result = graph.invoke({"messages": [("human", user_input)]})
         final = result["messages"][-1]
-        print(f"\nTravelBuddy: {final.content}")
+        print(f"\nCopilot: {final.content}")
 
 # --- KẾT THÚC CODE agent.py ---
-
