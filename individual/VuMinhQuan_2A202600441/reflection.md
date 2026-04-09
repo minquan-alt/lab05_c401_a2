@@ -7,6 +7,7 @@ UX designer + prompt engineer. Phụ trách thiết kế flow chatbot và viết
 - Thiết kế conversation flow 2 bước (hỏi tình trạng xe-> chat bot sinh ra câu trả lời)
 - viết work flow hoạt động của chat bot. Nếu AI chắc chắn với độ confident cao thì user sẽ nhìn thấy câu trả lười trực tiếp. Nếu AI chưa rõ thì sẽ hỏi thêm 1 số câu hỏi để có thêm dữ liệu cho câu trả lời. Nếu AI trả lời sai người dùng sẽ feedback trực tiếp thông qua ux. Nếu người dùng không tin hoặc AI không biết rõ trả lười như thế nào sẽ gửi câu "xin mời liên lạc với bộ phận kỹ thuật của vinfast để biết thêm thông tin".
 - Viết và test 3 phiên bản system prompt, chọn v3 vì precision tốt nhất trên 10 test cases
+- thiết kế user stories.
 - viết tool get_diagnostic.
 - Vẽ poster layout cho demo.
 
