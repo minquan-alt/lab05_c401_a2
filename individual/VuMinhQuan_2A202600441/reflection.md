@@ -1,7 +1,9 @@
 # Individual reflection — Vũ Minh Quân (2A202600441)
 
 ## 1. Role
-UX designer + prompt engineer. Phụ trách thiết kế flow chatbot và viết system prompt.
+- thiết kế user stories.
+- viết tool get_diagnostic.
+- thiết kế workflow hoạt động cho AI.
 
 ## 2. Đóng góp cụ thể
 - Thiết kế conversation flow 2 bước (hỏi tình trạng xe-> chat bot sinh ra câu trả lời)
