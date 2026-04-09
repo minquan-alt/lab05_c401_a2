@@ -8,9 +8,7 @@ Chatbot hỗ trợ Kỹ thuật viên (KTV) nhập thông tin xe (Model, Firmwar
 - Flow chạy thật (Agentic workflow): KTV nhập triệu chứng → AI tự động gọi Tool tra cứu lịch sử sửa chữa → Trích xuất Service Manual → Trả kết quả + Cảnh báo an toàn.
 
 ## Links
-- Prototype: https://claude.site/artifacts/xxx
-- Prompt test log: xem file `prototype/prompt-tests.md`
-- Video demo (backup): https://drive.google.com/xxx
+- Github: https://github.com/minquan-alt/lab05_c401_a2/tree/main/src
 
 ## Tools
 - UI: Streamlit (Python web app) / Terminal Console.
@@ -20,9 +18,9 @@ Chatbot hỗ trợ Kỹ thuật viên (KTV) nhập thông tin xe (Model, Firmwar
 ## Phân công
 | Thành viên | Phần | Output |
 |-----------|------|--------|
-| Quang |   |   |
+| Quang |Top 3 failure, agent.py, tools.py|SPEC, agent.py, tools.py|
 | Long |Canvas, ROI, System Prompt|SPEC, system_prompt.txt|
-| Nhân |   |  |
+| Nhân |Mini AI SPEC, System Prompt|SPEC, system_prompt.txt|
 | Tài |User Stories, agent.py|SPEC, agent.py|
 | Quân |User Stories, tool get_diagnostic|SPEC, tools.py|
 | Huy |Metrics & Eval, System Prompt|SPEC, system_prompt.txt|
