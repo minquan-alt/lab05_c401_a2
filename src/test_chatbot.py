@@ -1,6 +1,6 @@
 import os 
 from dotenv import load_dotenv
-from langchain_openai import ChatOpenAI
+from langchain_groq import ChatGroq
 
 # Load biến môi trường (nếu có dùng trong .env)
 load_dotenv()
@@ -14,13 +14,7 @@ def test_qwen_ollama():
     model_name = os.getenv("OLLAMA_MODEL")
 
     # Khởi tạo ChatOpenAI trỏ tới local Ollama (OpenAI compatible)
-    llm = ChatOpenAI(
-        base_url=base_url,
-        api_key=api_key, # Cần thiết lập key bất kỳ để bypass check của thư viện
-        model=model_name,
-        temperature=0.7,
-        max_tokens=256
-    )
+    llm = ChatGroq(model="llama-3.3-70b-versatile", temperature=0)
 
     # Test gọi model
     prompt = input("Nhập câu hỏi: ")    

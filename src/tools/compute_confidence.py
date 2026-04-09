@@ -39,6 +39,6 @@ def compute_confidence(candidates: list[dict], diagnostics: list[dict]):
     decision = "high" if (top_prob > 0.7 and has_diagnostic_detail) else "low"
     return {
         "decision": decision,
-        "selected_dtc": selected_dtc if decision == "high" else None,
+        "selected_dtc": selected_dtc,
         "ranked_candidates": ranked,
     }
