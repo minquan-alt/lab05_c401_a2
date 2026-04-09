@@ -1,0 +1,7 @@
+{
+  "service_json": "data/service_manual.json",
+  "collection": "service_manual",
+  "vector_size": 384,
+  "distance": "Cosine",
+  "batch_size": 64
+}
