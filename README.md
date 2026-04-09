@@ -1,154 +1,103 @@
-# ✈️ Vietnam Airlines NEO Chatbot - C401 Assignment A2
+# Lab 05 - C401 A2: VinFast Service Copilot
 
-> Revolutionary AI-powered customer service for Vietnam Airlines - Redefining the travel experience 24/7
+Agent hỗ trợ chẩn đoán xe điện VinFast theo pipeline:
 
-![Status](https://img.shields.io/badge/Status-Active-brightgreen)
-![Assignment](https://img.shields.io/badge/Assignment-C401%20A2-blue)
-![Type](https://img.shields.io/badge/Type-Chatbot%20AI-orange)
+`Symptom -> Candidate DTC -> Diagnostic reasoning -> Next actions`
 
-## 🎯 Project Overview
+Hệ thống dùng LangGraph + LangChain tools, dữ liệu lịch sử sửa chữa và diagnostic lưu trong SQLite.
 
-**C401_A2** is an innovative product canvas and business model for an AI-powered chatbot designed specifically for **Vietnam Airlines**. This project demonstrates a comprehensive analysis of value proposition, trust mechanisms, and feasibility assessment for deploying Neo-generation customer service technology.
+## Mục tiêu
 
-### 🚀 The Vision
+- Nhận mô tả triệu chứng từ kỹ thuật viên.
+- Trích xuất context xe (`model`, `model_year`, `firmware`, `symptom`).
+- Truy vấn dữ liệu lịch sử sửa chữa để sinh candidate DTC.
+- Truy vấn diagnostic để gợi ý nguyên nhân và bước kiểm tra/sửa chữa.
+- Vẫn đưa candidate khi metadata thiếu/sai (graceful fallback), đồng thời cảnh báo độ chắc chắn.
 
-Transform customer service at Vietnam Airlines by deploying an intelligent 24/7 chatbot that handles:
-- ✅ Flight bookings and ticket inquiries
-- ✅ Real-time flight information and status tracking
-- ✅ Policy explanations and baggage guidelines
-- ✅ Seamless escalation to human support when needed
+## Cấu trúc chính
 
----
-
-## 📊 Product Canvas Breakdown
-
-### 1. 💎 **VALUE PROPOSITION**
-
-| Segment | Details |
-|---------|---------|
-| **Users** | VNA customers seeking flight info, tickets, travel advice, and policy clarification |
-| **Pain Points** | ⏰ 10-15 minute wait times • 💰 Expensive phone calls • ⛔ Limited hours (outside business hours) |
-| **Aha Moments** | Smart recommendations • Intelligent task routing to human agents |
-| **Key Value** | ⚡ 24/7 availability • ⚙️ Instant responses • 🌍 Always-on support |
-
-### 2. 🛡️ **TRUST & RELIABILITY**
-
-| Aspect | Implementation |
-|--------|-----------------|
-| **Precision Strategy** | High precision prioritized (errors = immediate escalation) |
-| **Error Handling** | Instant handoff to human agents with full context preservation |
-| **Recovery Message** | *"Xin lỗi, nhân viên sẽ liên hệ lại"* (We apologize, our team will contact you) |
-| **Support Link** | Always provided with support hotline for user confidence |
-
-### 3. 📈 **FEASIBILITY ANALYSIS**
-
-```
-💰 COST:        ~$0.02 per GPT-4 query
-⏱️  LATENCY:     ~2 seconds average response
-🔧 API:         Vietnam Airlines real-time systems integration
-📊 DEPENDENCY:   Live flight and policy database
+```text
+lab05_c401_a2/
+├── src/
+│   ├── agent.py                    # Main agent (CLI), graph START->agent->END
+│   ├── streamlit_app.py            # Giao diện Streamlit
+│   ├── system_prompt.txt           # Prompt điều phối output
+│   ├── tools_mapping.py            # Khai báo tool list + dispatch map
+│   ├── tools/
+│   │   ├── validate_input.py
+│   │   ├── get_repair_history.py   # Query SQLite repair_history
+│   │   ├── get_diagnostic.py       # Query SQLite diagnostic_manual
+│   │   ├── compute_confidence.py
+│   │   └── retrieve_manual.py
+│   ├── ingestion/
+│   │   └── load_to_sqlite.py       # Nạp JSON -> SQLite
+│   └── data/
+│       ├── structure_database.db
+│       ├── repair_history.json
+│       ├── diagnostic_manual.json
+│       └── service_manual.json
+├── group/
+├── individual/
+└── README.md
 ```
 
-**Risk Assessment:**
-- ⚠️ Flight information accuracy (limited by data availability)
-- ⚠️ Policy information currency (requires regular updates)
-- ✅ Mitigation: Proven error handling with human escalation
+## Luồng xử lý agent hiện tại
 
----
+1. Nhận context chat (tối đa 6 cặp gần nhất + user hiện tại).
+2. Gọi `llm_with_tools`.
+3. Nếu model trả `tool_calls` native -> chạy tool theo vòng lặp.
+4. Nếu không có native call -> thử parse JSON tool call trong text.
+5. Nếu vẫn không có tool call -> chạy deterministic pipeline:
+   - LLM structured extraction (JSON schema)
+   - regex fallback nếu parse lỗi
+   - `validate_input`
+   - `get_repair_history` (lọc strict -> nới lỏng)
+   - `get_diagnostic`
+   - `compute_confidence`
+   - `retrieve_manual` (khi đủ metadata và đạt điều kiện)
+   - LLM synthesis output theo format chuẩn.
 
-## 👥 Team Members
+## Cấu hình môi trường
 
-| Student ID | Name | Role |
-|-----------|------|------|
-| 2A202600361 | **Đỗ Lê Thành Nhân** | Contributing Member |
-| 2A202600304 | **Trần Quang Long** | Contributing Member |
-| 2A202600063 | **Hoàng Bá Minh Quang** | Contributing Member |
+Tạo `src/.env`:
 
----
+```env
+OLLAMA_BASE_URL=http://127.0.0.1:11434/v1
+OLLAMA_API_KEY=ollama
+OLLAMA_MODEL=qwen2.5-coder:7b
 
-## 📁 Project Structure
-
-```
-C401_A2/
-|__ src/                           # source code
-├── group/                          # Group assignment materials
-│   └── C401_A2_Lab05.jpg          # Product canvas documentation
-│   └── C401_A2_Lab05_Spec.txt       # Product canvas documentation and Spec docs
-├── individual/                     # Individual contributions
-│   ├── DoLeThanhNhan-2A202600361/
-│   │   └── 2A202600361-DoLeThanhNhan.jpg
-│   └── TranQuangLong-2A02600304/
-│       └── LongPersonal.jpg
-|         ...
-└── README.md                       # This file
+QDRANT_BASE_URL=...
+QDRANT_API_KEY=...
 ```
 
----
-
-## 🎓 Assignment Details
-
-- **Course:** C401
-- **Assignment:** A2 - Product Canvas
-- **Type:** AI/Chatbot Business Model
-- **Focus:** Vietnam Airlines NEO Chatbot Strategy
-
----
-
-## 💡 Key Takeaways
-
-1. **Customer Obsession**: Directly addresses customer pain points with intelligent automation
-2. **Strategic Trust Building**: Error handling designed with trust recovery as core principle
-3. **Cost Efficiency**: Enterprise-grade AI capabilities at minimal cost (~$0.02 per interaction)
-4. **Scalability Ready**: Architecture supports 24/7 operations without human resource constraints
-5. **Real-world Application**: Depends on actual Vietnam Airlines API integration for live data
-
----
-
-## 🔗 Technologies & Dependencies
-
-| Component | Technology |
-|-----------|-----------|
-| **AI Model** | GPT-4 or equivalent |
-| **Integration** | Vietnam Airlines real-time API |
-| **Availability** | 24/7 cloud deployment |
-| **Fallback** | Human agent routing system |
-
----
-
-## ✨ Project Highlights
-
-> **"Revolutionizing customer service through conversational AI - delivering precision, trust, and 24/7 availability."**
-
-This project represents a complete analysis of deploying cutting-edge AI technology in the airline industry, balancing innovation with pragmatic risk management and customer trust.
-
----
-
-## 📞 Support & Escalation
-
-- 🤖 **AI Handles**: Routine inquiries, information requests, basic troubleshooting
-- 👤 **Human Escalation**: Complex issues, policy exceptions, quality assurance
-- 📱 **Support Contact**: Always provided in conversation context
-- ⏱️ **Response Time**: <2 seconds average bot response
-
----
-
-**Last Updated:** April 2026  
-**Status:** Active Development  
-**Assignment Status:** Completed ✅
-
----
-
-*C401_A2 - Vietnam Airlines NEO Chatbot • Powering the future of customer service*
-
----
-
-## 🧪 Run VinFast Diagnostic UI (Streamlit)
-
-From project `src/`:
+## Chạy bằng CLI
 
 ```bash
+cd src
+python agent.py
+```
+
+## Chạy giao diện Streamlit
+
+```bash
+cd src
 pip install streamlit
 streamlit run streamlit_app.py
 ```
 
-Default app URL: `http://localhost:8501`
+Mở: `http://localhost:8501`
+
+## Nạp lại dữ liệu vào SQLite (nếu cần)
+
+```bash
+cd src
+python ingestion/load_to_sqlite.py
+```
+
+## Ghi chú
+
+- `dtc` sẽ ưu tiên top candidate nếu có dữ liệu, không phụ thuộc tuyệt đối vào `decision`.
+- Khi thiếu metadata, agent vẫn trả candidate tham khảo nhưng có cảnh báo.
+- Nếu muốn đẩy repo và gặp divergent branches:
+  - `git pull --rebase origin main`
+  - resolve conflict (nếu có), rồi `git push origin main`.
