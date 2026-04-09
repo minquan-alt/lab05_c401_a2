@@ -21,7 +21,7 @@ Thông qua mã máy, triệu chứng và các thông tin liên quan, Chatbot đ�
 | Thành viên | Phần | Output |
 |-----------|------|--------|
 | Quang |   |   |
-| Long |   |   |
+| Long |Canvas, ROI, partial System Prompt|SPEC, system_prompt.txt|
 | Nhân |   |  |
 | Tài |   |   |
 | Quân |   |   |
