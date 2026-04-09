@@ -1,0 +1,9 @@
+langgraph
+langchain
+langchain-core
+langchain-ollama
+langchain-google-genai
+streamlit
+python-dotenv
+pydantic
+requests

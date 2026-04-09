@@ -1,0 +1,69 @@
+{
+  "knowledge_base": {
+    "tsb": [
+      {
+        "id": "TSB-001",
+        "title": "Charging System Software Update",
+        "description": "Software glitch causing charging interruption on VF8 models",
+        "symptoms": ["Charging stops randomly", "Red light flashes"],
+        "solution": "Update BMS firmware to version 2.1.3",
+        "affected_models": ["VF8"],
+        "date_issued": "2024-12-01",
+        "supersedes": ["SM Section 4.2.1"]
+      },
+      {
+        "id": "TSB-002",
+        "title": "Battery Cell Balancing Issue",
+        "description": "Uneven cell voltage causing slow charging",
+        "symptoms": ["Charging takes longer than usual"],
+        "solution": "Perform cell balancing procedure via diagnostic tool",
+        "affected_models": ["VF8", "VF9"],
+        "date_issued": "2024-11-15"
+      },
+      {
+        "id": "TSB-003",
+        "title": "High Voltage Battery Replacement Guidelines",
+        "description": "Updated procedure for HV battery replacement - software update only",
+        "symptoms": ["Battery not holding charge", "Low voltage warning"],
+        "solution": "DO NOT replace battery hardware. Update BMS firmware to version 3.0.1",
+        "affected_models": ["VF8"],
+        "date_issued": "2025-01-15",
+        "supersedes": ["SM Section 5.1.2 Hardware Replacement"],
+        "note": "This TSB supersedes previous hardware replacement procedures"
+      }
+    ],
+    "repair_history": [
+      {
+        "vin": "VF8-001",
+        "symptom": "Charging not starting, red warning light",
+        "diagnosis": "P0A00 - High Voltage System Fault",
+        "repair": "Replaced faulty high voltage connector",
+        "outcome": "Successful",
+        "date": "2024-10-15"
+      },
+      {
+        "vin": "VF8-002",
+        "symptom": "Slow charging",
+        "diagnosis": "P0A01 - Battery Pack Voltage Low",
+        "repair": "Updated BMS software and balanced cells",
+        "outcome": "Successful",
+        "date": "2024-11-20"
+      }
+    ],
+    "vin_specific_data": {
+      "VF8-001": {
+        "firmware_version": "2.0.5",
+        "recall_campaign": true,
+        "recall_reason": "High voltage connector recall - potential fire risk",
+        "last_service": "2024-12-01",
+        "known_issues": ["Charging port corrosion"]
+      },
+      "VF8-002": {
+        "firmware_version": "2.1.2",
+        "recall_campaign": false,
+        "last_service": "2024-11-25",
+        "known_issues": []
+      }
+    }
+  }
+}
