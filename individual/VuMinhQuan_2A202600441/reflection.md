@@ -1,4 +1,4 @@
-# Individual reflection — Nguyễn Văn A (AI20K001)
+# Individual reflection — Vũ Minh Quân (2A202600441)
 
 ## 1. Role
 UX designer + prompt engineer. Phụ trách thiết kế flow chatbot và viết system prompt.
