@@ -21,8 +21,8 @@ Thông qua mã máy, triệu chứng và các thông tin liên quan, Chatbot đ�
 | Thành viên | Phần | Output |
 |-----------|------|--------|
 | Quang |   |   |
-| Long |Canvas, ROI, partial System Prompt|SPEC, system_prompt.txt|
+| Long |Canvas, ROI, System Prompt|SPEC, system_prompt.txt|
 | Nhân |   |  |
-| Tài |   |   |
-| Quân |   |   |
+| Tài |User Stories, agent.py|SPEC, agent.py|
+| Quân |User Stories, tool get_diagnostic|SPEC, tools.py|
 | Huy |   |   |
