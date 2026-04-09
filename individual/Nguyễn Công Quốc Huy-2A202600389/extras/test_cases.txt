@@ -1,0 +1,149 @@
+1. Happy Case — rõ ràng, đủ thông tin
+Case 1.1 — Charging issue (firmware bug)
+Ground truth
+Model: VF8 2023 v1.2.x
+DTC: P1A12
+Fix: update firmware
+
+Prompt 1
+VF8 2023 firmware v1.2.1 không sạc được ở trạm AC, xe báo lỗi pin
+Prompt 2
+Xe VF8 đời 2023, không nhận sạc AC, nghi có lỗi BMS, firmware hiện tại v1.2.1
+Prompt 3
+VF8 2023 bị lỗi không sạc, có thể do firmware, hiện đang chạy v1.2
+
+Expected behavior 
+High confidence
+Output: P1A12
+Suggest: update firmware
+Có repair steps + warning
+
+2. Low-confidence Case — thiếu thông tin
+Case 2.1 — vague charging issue
+Ground truth
+Có thể là P1A12 hoặc P0A80
+
+Prompt 1
+Xe không sạc được
+Prompt 2
+VF8 bị lỗi sạc nhưng không rõ nguyên nhân
+Prompt 3
+Xe điện VinFast không nhận sạc, không biết đời nào
+
+Expected behavior
+Không đưa kết luận chắc chắn
+Output:
+2–3 DTC candidates
+yêu cầu thêm:
+model_year
+firmware
+Có gợi ý kiểm tra tiếp
+
+3. Failure Case — false correlation
+Case 3.1 — same symptom, wrong mapping
+Ground truth
+Model: VF8 2022
+DTC: P0A80
+Fix: thay pin
+
+Prompt 1
+VF8 2022 không sạc được, xe báo lỗi pin
+Prompt 2
+Xe VF8 đời cũ bị lỗi không sạc, firmware không rõ
+Prompt 3
+VF8 2022 bị lỗi giống như firmware bug, có cần update không?
+
+Expected behavior
+Không nhầm sang P1A12
+Phải phân biệt theo version
+Suggest kiểm tra pin (không phải firmware)
+
+4. Conflict Case — cùng DTC, khác version
+Case 4.1 — P1A12 khác root cause
+Ground truth
+VF8 2023 → firmware bug
+VF8 2024 → hardware charging port
+
+Prompt 1
+VF8 2024 firmware v2.0 không sạc được, báo lỗi P1A12
+Prompt 2
+Xe VF8 đời 2024 bị lỗi sạc P1A12
+Prompt 3
+VF8 2024 lỗi P1A12, có phải do firmware không?
+
+Expected behavior
+Không suggest update firmware
+Phải detect:
+version 2024 → hardware issue
+Suggest kiểm tra cổng sạc
+
+5. Ambiguous Case — nhiều khả năng
+Case 5.1 — vibration issue
+Ground truth
+Có thể motor / shaft / mount
+
+Prompt 1
+Xe rung nhẹ khi tăng tốc
+Prompt 2
+VF8 chạy bị rung khi đạp ga
+Prompt 3
+Xe điện bị rung lúc tăng tốc, không rõ nguyên nhân
+
+Expected behavior
+Không đưa 1 đáp án duy nhất
+Output:
+nhiều hypothesis
+checklist kiểm tra
+Confidence thấp
+
+6. Missing Metadata Case
+Case 6.1 — thiếu model_year
+
+Prompt 1
+VF8 không sạc được
+Prompt 2
+Xe VF8 lỗi pin không rõ nguyên nhân
+Prompt 3
+VinFast VF8 bị lỗi sạc
+
+Expected behavior
+Hỏi lại:
+model_year
+firmware
+Không đưa DTC cụ thể
+
+7. Noisy / Real-world Input
+Case 7.1 — user nói không chuẩn
+
+Prompt 1
+xe tui tự nhiên sạc không vô, hôm qua còn bình thường
+Prompt 2
+đang chạy VF8 thì giờ không nhận sạc nữa, không biết sao
+Prompt 3
+cắm sạc mà nó không ăn điện
+
+Expected behavior
+Parse đúng intent
+Không crash
+chuyển về:
+charging issue
+follow low-confidence flow
+
+8. Correction Case (feedback loop)
+Case 8.1 — AI đoán sai → user sửa
+
+Prompt 1 (initial)
+VF8 2023 không sạc được
+→ AI đoán: P1A12
+
+Prompt 2 (user feedback)
+Đã kiểm tra, không phải firmware, pin có vấn đề
+
+Prompt 3 (follow-up)
+Vậy giờ nên kiểm tra gì tiếp?
+
+Expected behavior
+Update reasoning
+chuyển sang P0A80
+đề xuất kiểm tra pin
+
