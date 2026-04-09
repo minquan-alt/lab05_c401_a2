@@ -4,7 +4,7 @@ from langgraph.graph import StateGraph, START, END
 from langgraph.graph.message import add_messages
 from langchain_openai import ChatOpenAI
 from langchain_core.messages import SystemMessage, HumanMessage, AIMessage
-from tools import search_flights, search_hotels, calculate_budget
+from tools_mapping import TOOLS, TOOL_MAP
 from dotenv import load_dotenv
 import os
 import json
@@ -21,7 +21,7 @@ class AgentState(TypedDict):
     messages: Annotated[list, add_messages]
 
 # 3. Khởi tạo LLM và Tools
-tools_list = [search_flights, search_hotels, calculate_budget]
+tools_list = TOOLS
 
 base_url = os.getenv("OLLAMA_BASE_URL")
 api_key = os.getenv("OLLAMA_API_KEY")
@@ -36,11 +36,7 @@ llm = ChatOpenAI(
 llm_with_tools = llm.bind_tools(tools_list)
 
 # Map tên tool -> hàm thực thi
-TOOL_MAP = {
-    "search_flights": search_flights,
-    "search_hotels": search_hotels,
-    "calculate_budget": calculate_budget,
-}
+# (centralized in tools_mapping.py)
 
 MAX_TOOL_ITERATIONS = 5  # Giới hạn số lần gọi tool liên tiếp, tránh loop vô hạn
 
