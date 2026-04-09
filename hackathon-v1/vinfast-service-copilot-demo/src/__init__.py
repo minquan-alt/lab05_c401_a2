@@ -1,1 +1,0 @@
-# VinFast Service Copilot Package

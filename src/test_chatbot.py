@@ -27,8 +27,9 @@ def test_qwen_ollama():
     
     try:
         response = llm.invoke(prompt)
+        text = response.content if hasattr(response, 'content') else str(response)
         print("🤖 Response từ Qwen2.5-Coder:")
-        print(response.content)
+        print(text)
     except Exception as e:
         print(f"❌ Lỗi khi gọi model: {e}")
 

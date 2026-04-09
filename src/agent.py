@@ -72,19 +72,31 @@ def agent_node(state: AgentState):
     if not any(isinstance(m, SystemMessage) for m in messages):
         messages = [SystemMessage(content=SYSTEM_PROMPT)] + messages
 
+    def _get_response_content(response):
+        if isinstance(response, str):
+            return response
+        if hasattr(response, "content"):
+            return response.content
+        if hasattr(response, "text"):
+            return response.text
+        if hasattr(response, "output_text"):
+            return response.output_text
+        return str(response)
+
     for iteration in range(MAX_TOOL_ITERATIONS):
         print(f"\n--- Iteration {iteration + 1}/{MAX_TOOL_ITERATIONS} ---")
 
         response = llm_with_tools.invoke(messages)
-        content = response.content
+        content = _get_response_content(response)
 
         # === LOGGING ===
-        print(f"[DEBUG] tool_calls: {response.tool_calls}")
+        print(f"[DEBUG] tool_calls: {getattr(response, 'tool_calls', None)}")
         print(f"[DEBUG] content (100 chars): {repr(content[:100])}")
 
         # ── A. Native tool calling (model hỗ trợ chuẩn, VD: llama3.1) ──
-        if response.tool_calls:
-            for tc in response.tool_calls:
+        tool_calls = getattr(response, 'tool_calls', None)
+        if tool_calls:
+            for tc in tool_calls:
                 tool_name = tc["name"]
                 tool_args = tc["args"]
                 tool_fn = TOOL_MAP.get(tool_name)
@@ -123,7 +135,7 @@ def agent_node(state: AgentState):
 
     # Đã hết số lần lặp → trả về kết quả cuối
     print("⚠️ Đã đạt giới hạn iterations, trả về kết quả hiện tại")
-    return {"messages": [AIMessage(content=response.content)]}
+    return {"messages": [AIMessage(content=_get_response_content(response))]}
 
 
 # 5. Xây dựng Graph — Đơn giản: START → agent → END
