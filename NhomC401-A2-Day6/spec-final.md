@@ -1,0 +1,148 @@
+# SPEC — AI Product Hackathon
+
+**Nhóm:** ___
+**Track:** ☑ VinFast · ☐ Vinmec · ☐ VinUni-VinSchool · ☐ XanhSM · ☐ Open
+**Problem statement (1 câu):** *Ai gặp vấn đề gì, hiện giải thế nào, AI giúp được gì*
+
+---
+
+## 1. AI Product Canvas
+
+|   | Value | Trust | Feasibility |
+|---|-------|-------|-------------|
+| **Câu hỏi** | User nào? Pain gì? AI giải gì? | Khi AI sai thì sao? User sửa bằng cách nào? | Cost/latency bao nhiêu? Risk chính? |
+| **Trả lời** | *Kỹ thuật viên (KTV) tại xưởng dịch vụ VinFast, Tra cứu Service Manual (PDF) và sơ đồ mạch điện thủ công tốn hàng giờ. Chẩn đoán sai bệnh thay nhầm linh kiện. AI giúp trích xuất chính xác hướng dẫn sửa chữa từ database nội bộ dựa vào context của xe.* | *KTV thực hiện sai bước kiểm tra, lãng phí thời gian đo đạc.* | *~$0.02/query (Embedding + LLM inference). Latency < 3s. Model bị hallucinate các thông số kỹ thuật an toàn (lực siết ốc, mức điện áp cao áp), gây nguy hiểm.* |
+
+**Automation hay augmentation?** ☐ Automation · ☑ Augmentation
+Justify: *Augmentation — AI đóng vai trò như một chuyên gia tư vấn (Copilot), KTV là người ra quyết định cuối cùng và thao tác vật lý trên xe. Cost of reject (bỏ qua gợi ý của AI) gần như bằng không.*
+
+**Learning signal:**
+
+1. User correction đi vào đâu? Logged vào một Vector DB Feedback loop; các câu trả lời bị report sẽ được route cho kỹ sư Master Tech review để cập nhật lại hệ thống document gốc hoặc thêm rule cứng.
+2. Product thu signal gì để biết tốt lên hay tệ đi? Tỷ lệ Thumbs Up/Down; Click-through rate (CTR) vào link tài liệu gốc mà AI trích dẫn; Thời gian trung bình để đóng một Service Ticket (Lead time).
+3. Data thuộc loại nào? Domain-specific · ☑ Domain-specific (Tài liệu kỹ thuật nội bộ của VinFast, lịch sử sửa chữa các dòng xe VF e34, VF8, VF9).
+4. Có marginal value không? (Model đã biết cái này chưa?) Rất cao. Các mô hình LLM public hoàn toàn mù tịt về sơ đồ mạch điện chi tiết hay firmware riêng của xe VinFast.
+
+---
+
+## 2. User Stories — 4 paths
+
+Phân tích 4 Paths: AI Assistant cho Kỹ thuật viên Xe điện
+
+### Feature: *Suy luận mã lỗi từ triệu chứng (Probable DTC Generation)*
+
+**Trigger:** *KTV nhập Model xe + Triệu chứng (Symptom) bằng ngôn ngữ tự nhiên.*
+
+| Path | Câu hỏi thiết kế | Mô tả |
+|------|-------------------|-------|
+| Happy — AI đúng, tự tin | User thấy gì? Flow kết thúc ra sao? | *AI liệt kê danh sách DTC tiềm năng kèm xác suất (ví dụ: P0A80 - 42%). KTV thấy đúng với kinh nghiệm, nhấn chọn để xem chi tiết.* |
+| Low-confidence — AI không chắc | System báo "không chắc" bằng cách nào? User quyết thế nào? | *AI hiển thị cảnh báo: "Dữ liệu chưa đủ để xác định" và yêu cầu KTV cung cấp thêm thông tin (như tiếng động lạ phát ra từ đâu, mileage cụ thể) để thu hẹp danh sách DTC.* |
+| Failure — AI sai | User biết AI sai bằng cách nào? Recover ra sao? | *Giao diện có nút "Giải pháp không hiệu quả". KTV bấm vào đó, hệ thống yêu cầu KTV nhập kết quả kiểm tra thực tế. AI sẽ dựa vào dữ liệu mới để gợi ý hướng khác (ví dụ: Up-flash phần mềm). Số bước: 2 click (Báo lỗi -> Nhận gợi ý mới).* |
+| Correction — user sửa | User sửa bằng cách nào? Data đó đi vào đâu? | *KTV nhập mã lỗi đúng sau khi cắm máy quét. Hệ thống ghi nhận cặp [Symptom ↔ DTC thực tế] vào Feedback Loop để tái huấn luyện bước Step 1 & 2.* |
+
+---
+
+## 3. Eval metrics + threshold
+VinFast Service Copilot – AI Chẩn Đoán Xe Điện (Symptom → DTC → Repair)
+**Optimize precision hay recall?** ☑ Precision · ☐ Recall
+Tại sao? Trả lời sai về ca bệnh/lỗi → Kỹ thuật viên mất thời gian mà vẫn không sửa được, có thể làm hỏng vị trí khác → mất tiền, Xưởng mất uy tín, người đem xe đi sửa mất kiên nhẫn, thời gian. 
+False positive tệ hơn false negative 
+Nếu không biết thì AI trả lời không biết → Tiết kiệm thời gian, tiền bạc
+
+| Metric | Threshold | Red flag (dừng khi) |
+|--------|-----------|---------------------|
+| *Precision (câu trả lời đúng/tổng trả lời)* | *≥95%* | *<90% trong 1 tuần* |
+| *Escalation rate (kỹ thuật viên cần đọc lại manual)*  |  *<30%* | *>30% → AI không hữu ích*  |
+| *User satisfaction*  |  *≥4/5* | *<3/5 trong 2 tuần*  |
+
+---
+
+## 4. Top 3 failure modes
+
+*Liệt kê cách product có thể fail — không phải list features.*
+*"Failure mode nào user KHÔNG BIẾT bị sai? Đó là cái nguy hiểm nhất."*
+
+| # | Trigger | Hậu quả | Mitigation |
+|---|---------|---------|------------|
+| 1 | *AI hallucinate thông số kỹ thuật quan trọng (ví dụ: điện áp HV, torque siết ốc, thứ tự kiểm tra) do retrieval thiếu hoặc conflict giữa các tài liệu* | *KTV làm theo hướng dẫn sai mà không nhận ra → nguy cơ mất an toàn (điện cao áp), hỏng linh kiện, tai nạn lao động* | *Hard rule: tất cả thông số critical (HV, torque, safety steps) chỉ được lấy từ nguồn có citation rõ ràng, không cho model tự generate- Highlight + require confirmation cho bước liên quan safety ("Xác nhận đã ngắt HV trước khi tiếp tục")- Nếu không tìm thấy source → trả "không chắc" thay vì đoán* |
+| 2 | *Retrieval sai version xe / firmware (ví dụ: VF8 đời 2022 vs 2024 khác wiring hoặc ECU logic)*  | *AI đưa đúng quy trình nhưng cho sai phiên bản → KTV làm sai → chẩn đoán lệch, thay nhầm linh kiện → tốn thời gian + chi phí*  |  *Bắt buộc input structured: VIN / model year / firmware version trước khi trả lời- Retrieval filter theo metadata (versioned docs)- UI hiển thị rõ: "Áp dụng cho VF8 2023 – FW v1.2.3"- Detect ambiguity → yêu cầu user xác nhận version* |
+| 3 | *Over-trust (automation bias): KTV tin AI quá mức, bỏ qua bước verify vật lý*  | *KTV không cross-check bằng đồng hồ đo hoặc máy scan → sai sót không bị phát hiện sớm → failure chỉ lộ ra sau nhiều bước (cascade: chẩn đoán sai → sửa sai → khách quay lại)*  | *- Thiết kế UI ép “human-in-the-loop”: checklist bắt buộc (vd: "đã đo điện áp thực tế chưa?")- Show confidence + alternative hypotheses (top 3 DTC thay vì 1)- Track behavior: nếu user không mở tài liệu gốc / không verify → cảnh báo nhẹ- Training + guideline: AI = copilot, không phải authority*  |
+
+---
+
+## 5. ROI 3 kịch bản
+
+|   | Conservative | Realistic | Optimistic |
+|---|-------------|-----------|------------|
+| **Assumption** | *100 user, 50% dùng thường xuyên* | *500 user, 70% dùng thường xuyên* | *2000 user, 85% dùng thường xuyên* |
+| **Cost** | *$50/ngày (API + infra)* | *$200/ngày* | *$500/ngày* |
+| **Benefit** | *Mỗi user tiết kiệm 15 phút/lần → 12.5 giờ/ngày tổng* | *58 giờ/ngày* | *425 giờ/ngày* |
+| **Net** | *Tiết kiệm ~$250/ngày − $50 = +$200*  | *+$960/ngày*  | *+$8000/ngày*  |
+
+**Kill criteria:** *Khi nào nên dừng? VD: cost > benefit 2 tháng liên tục*
+
+---
+
+## 6. Mini AI spec (1 trang)
+
+ Mini AI Spec — VinFast Service Copilot
+1. Problem & User
+User: Kỹ thuật viên (KTV) tại xưởng dịch vụ VinFast
+ Problem:
+Tra cứu Service Manual (PDF, sơ đồ mạch điện) mất hàng giờ
+Dễ chẩn đoán sai → thay nhầm linh kiện → tốn thời gian & chi phí
+
+2. Solution
+AI Copilot (augmentation):
+Input: Model xe + triệu chứng (natural language)
+Output:
+Danh sách DTC (kèm xác suất)
+Hướng dẫn sửa chữa có citation từ tài liệu nội bộ
+Nguyên tắc:
+AI = tư vấn, KTV = quyết định cuối
+Nếu không chắc → trả “không biết”, không đoán
+
+3. Key Feature (MVP)
+Symptom → DTC → Repair flow
+Happy path: trả top DTC + xác suất → KTV chọn xem chi tiết
+Low-confidence: yêu cầu thêm thông tin (mileage, vị trí tiếng ồn…)
+Failure recovery: nút “Giải pháp không hiệu quả” → AI gợi ý lại
+Correction: KTV nhập DTC thực tế → lưu vào feedback loop
+
+4. Why it works (Data moat)
+Data: tài liệu kỹ thuật nội bộ + lịch sử sửa chữa (VF e34, VF8, VF9)
+Domain-specific → LLM public không có
+Feedback loop: Symptom ↔ DTC → model càng dùng càng chính xác
+
+5. Success Metrics (precision-first)
+Precision ≥95% (critical – safety)
+Escalation rate <30%
+User satisfaction ≥4/5
+Lead time xử lý ticket ↓ ≥20%
+Principle: Better “I don’t know” than confidently wrong
+
+6. Risks & Mitigation
+1. Hallucination thông số nguy hiểm (HV, torque)
+ → Chỉ cho phép trả lời khi có citation + require xác nhận safety
+2. Sai version xe / firmware
+ → Bắt buộc VIN/model year + filter theo metadata
+3. Over-trust (KTV tin AI quá mức)
+ → Checklist bắt buộc + show multiple hypotheses + ép verify
+
+7. Economics (ROI)
+Cost: ~$0.02/query → ~$50–500/ngày
+Benefit: tiết kiệm 10–15 phút/KTV/ngày
+Net: dương ngay cả ở kịch bản conservative
+Not counted:
+Giảm thay nhầm linh kiện
+Giảm rework
+Tăng throughput xưởng
+
+8. Kill Criteria
+Precision <90% (2 tuần)
+Adoption <40% (1 tháng)
+Cost > Benefit (2 tháng)
+
+9. Bottom line
+Nếu đạt được accuracy và trust, đây là bài toán ROI dương + có data moat mạnh.
+ Rủi ro lớn nhất không phải cost — mà là hallucination trong hệ thống safety-critical.
