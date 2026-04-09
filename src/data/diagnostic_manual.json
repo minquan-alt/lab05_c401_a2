@@ -1,0 +1,422 @@
+[
+  {
+    "dtc": "P0A80",
+    "description": "Battery Pack Deterioration",
+    "applicable": {
+      "model": "VF9",
+      "model_year": 2022,
+      "firmware": "v1.0.x"
+    },
+    "possible_causes": [
+      "battery degradation",
+      "cooling system failure",
+      "cell imbalance"
+    ],
+    "diagnostic_steps": [
+      "Read freeze-frame and DTC status",
+      "Check battery temperature and cooling logs",
+      "Check cell voltages and delta",
+      "If data is insufficient: ask for SOC, ambient temp, and conditions",
+      "Version note: applies to firmware v1.0.x (model_year 2022)"
+    ]
+  },
+  {
+    "dtc": "P0A80",
+    "description": "Battery Pack Deterioration",
+    "applicable": {
+      "model": "VF8",
+      "model_year": 2023,
+      "firmware": "v1.1.x"
+    },
+    "possible_causes": [
+      "battery degradation",
+      "cooling system failure",
+      "cell imbalance"
+    ],
+    "diagnostic_steps": [
+      "Read freeze-frame and DTC status",
+      "Check battery temperature and cooling logs",
+      "Check cell voltages and delta",
+      "If data is insufficient: ask for SOC, ambient temp, and conditions",
+      "Version note: applies to firmware v1.1.x (model_year 2023)"
+    ]
+  },
+  {
+    "dtc": "P0A80",
+    "description": "Battery Pack Deterioration",
+    "applicable": {
+      "model": "VF8",
+      "model_year": 2023,
+      "firmware": "v1.2.x"
+    },
+    "possible_causes": [
+      "battery degradation",
+      "cooling system failure",
+      "cell imbalance"
+    ],
+    "diagnostic_steps": [
+      "Read freeze-frame and DTC status",
+      "Check battery temperature and cooling logs",
+      "Check cell voltages and delta",
+      "If data is insufficient: ask for SOC, ambient temp, and conditions",
+      "Version note: applies to firmware v1.2.x (model_year 2023)"
+    ]
+  },
+  {
+    "dtc": "P0A80",
+    "description": "Battery Pack Deterioration",
+    "applicable": {
+      "model": "VF9",
+      "model_year": 2024,
+      "firmware": "v1.3.x"
+    },
+    "possible_causes": [
+      "battery degradation",
+      "cooling system failure",
+      "cell imbalance"
+    ],
+    "diagnostic_steps": [
+      "Read freeze-frame and DTC status",
+      "Check battery temperature and cooling logs",
+      "Check cell voltages and delta",
+      "If data is insufficient: ask for SOC, ambient temp, and conditions",
+      "Version note: applies to firmware v1.3.x (model_year 2024)"
+    ]
+  },
+  {
+    "dtc": "P0A80",
+    "description": "Battery Pack Deterioration",
+    "applicable": {
+      "model": "VF e34",
+      "model_year": 2024,
+      "firmware": "v1.4.x"
+    },
+    "possible_causes": [
+      "battery degradation",
+      "cooling system failure",
+      "cell imbalance"
+    ],
+    "diagnostic_steps": [
+      "Read freeze-frame and DTC status",
+      "Check battery temperature and cooling logs",
+      "Check cell voltages and delta",
+      "If data is insufficient: ask for SOC, ambient temp, and conditions",
+      "Version note: applies to firmware v1.4.x (model_year 2024)"
+    ]
+  },
+  {
+    "dtc": "P1A12",
+    "description": "BMS Firmware / Charge Control Fault",
+    "applicable": {
+      "model": "VF8",
+      "model_year": 2022,
+      "firmware": "v1.0.x"
+    },
+    "possible_causes": [
+      "BMS firmware issue",
+      "charger handshake issue",
+      "connector oxidation"
+    ],
+    "diagnostic_steps": [
+      "Confirm charger type (AC/DC) and port status",
+      "Check BMS logs and firmware version",
+      "Try different charger/cable to exclude external causes",
+      "If intermittent: ask for time, frequency, and environment details",
+      "Version note: applies to firmware v1.0.x (model_year 2022)"
+    ]
+  },
+  {
+    "dtc": "P1A12",
+    "description": "BMS Firmware / Charge Control Fault",
+    "applicable": {
+      "model": "VF8",
+      "model_year": 2023,
+      "firmware": "v1.1.x"
+    },
+    "possible_causes": [
+      "BMS firmware issue",
+      "charger handshake issue",
+      "connector oxidation"
+    ],
+    "diagnostic_steps": [
+      "Confirm charger type (AC/DC) and port status",
+      "Check BMS logs and firmware version",
+      "Try different charger/cable to exclude external causes",
+      "If intermittent: ask for time, frequency, and environment details",
+      "Version note: applies to firmware v1.1.x (model_year 2023)"
+    ]
+  },
+  {
+    "dtc": "P1A12",
+    "description": "BMS Firmware / Charge Control Fault",
+    "applicable": {
+      "model": "VF8",
+      "model_year": 2023,
+      "firmware": "v1.2.x"
+    },
+    "possible_causes": [
+      "BMS firmware issue",
+      "charger handshake issue",
+      "connector oxidation"
+    ],
+    "diagnostic_steps": [
+      "Confirm charger type (AC/DC) and port status",
+      "Check BMS logs and firmware version",
+      "Try different charger/cable to exclude external causes",
+      "If intermittent: ask for time, frequency, and environment details",
+      "Version note: applies to firmware v1.2.x (model_year 2023)"
+    ]
+  },
+  {
+    "dtc": "P1A12",
+    "description": "BMS Firmware / Charge Control Fault",
+    "applicable": {
+      "model": "VF9",
+      "model_year": 2024,
+      "firmware": "v1.3.x"
+    },
+    "possible_causes": [
+      "BMS firmware issue",
+      "charger handshake issue",
+      "connector oxidation"
+    ],
+    "diagnostic_steps": [
+      "Confirm charger type (AC/DC) and port status",
+      "Check BMS logs and firmware version",
+      "Try different charger/cable to exclude external causes",
+      "If intermittent: ask for time, frequency, and environment details",
+      "Version note: applies to firmware v1.3.x (model_year 2024)"
+    ]
+  },
+  {
+    "dtc": "P1A12",
+    "description": "BMS Firmware / Charge Control Fault",
+    "applicable": {
+      "model": "VF8",
+      "model_year": 2024,
+      "firmware": "v1.4.x"
+    },
+    "possible_causes": [
+      "BMS firmware issue",
+      "charger handshake issue",
+      "connector oxidation"
+    ],
+    "diagnostic_steps": [
+      "Confirm charger type (AC/DC) and port status",
+      "Check BMS logs and firmware version",
+      "Try different charger/cable to exclude external causes",
+      "If intermittent: ask for time, frequency, and environment details",
+      "Version note: applies to firmware v1.4.x (model_year 2024)"
+    ]
+  },
+  {
+    "dtc": "P0C01",
+    "description": "Inverter / Motor Control Performance",
+    "applicable": {
+      "model": "VF9",
+      "model_year": 2022,
+      "firmware": "v1.0.x"
+    },
+    "possible_causes": [
+      "inverter overheating",
+      "sensor calibration drift",
+      "wiring harness fault"
+    ],
+    "diagnostic_steps": [
+      "Check inverter temperature and coolant flow",
+      "Read live data (current/voltage) during acceleration",
+      "Inspect connectors and harness",
+      "If multiple DTCs appear: record full DTC list and conditions",
+      "Version note: applies to firmware v1.0.x (model_year 2022)"
+    ]
+  },
+  {
+    "dtc": "P0C01",
+    "description": "Inverter / Motor Control Performance",
+    "applicable": {
+      "model": "VF9",
+      "model_year": 2023,
+      "firmware": "v1.1.x"
+    },
+    "possible_causes": [
+      "inverter overheating",
+      "sensor calibration drift",
+      "wiring harness fault"
+    ],
+    "diagnostic_steps": [
+      "Check inverter temperature and coolant flow",
+      "Read live data (current/voltage) during acceleration",
+      "Inspect connectors and harness",
+      "If multiple DTCs appear: record full DTC list and conditions",
+      "Version note: applies to firmware v1.1.x (model_year 2023)"
+    ]
+  },
+  {
+    "dtc": "P0C01",
+    "description": "Inverter / Motor Control Performance",
+    "applicable": {
+      "model": "VF9",
+      "model_year": 2023,
+      "firmware": "v1.2.x"
+    },
+    "possible_causes": [
+      "inverter overheating",
+      "sensor calibration drift",
+      "wiring harness fault"
+    ],
+    "diagnostic_steps": [
+      "Check inverter temperature and coolant flow",
+      "Read live data (current/voltage) during acceleration",
+      "Inspect connectors and harness",
+      "If multiple DTCs appear: record full DTC list and conditions",
+      "Version note: applies to firmware v1.2.x (model_year 2023)"
+    ]
+  },
+  {
+    "dtc": "P0C01",
+    "description": "Inverter / Motor Control Performance",
+    "applicable": {
+      "model": "VF8",
+      "model_year": 2024,
+      "firmware": "v1.3.x"
+    },
+    "possible_causes": [
+      "inverter overheating",
+      "sensor calibration drift",
+      "wiring harness fault"
+    ],
+    "diagnostic_steps": [
+      "Check inverter temperature and coolant flow",
+      "Read live data (current/voltage) during acceleration",
+      "Inspect connectors and harness",
+      "If multiple DTCs appear: record full DTC list and conditions",
+      "Version note: applies to firmware v1.3.x (model_year 2024)"
+    ]
+  },
+  {
+    "dtc": "P0C01",
+    "description": "Inverter / Motor Control Performance",
+    "applicable": {
+      "model": "VF9",
+      "model_year": 2024,
+      "firmware": "v1.4.x"
+    },
+    "possible_causes": [
+      "inverter overheating",
+      "sensor calibration drift",
+      "wiring harness fault"
+    ],
+    "diagnostic_steps": [
+      "Check inverter temperature and coolant flow",
+      "Read live data (current/voltage) during acceleration",
+      "Inspect connectors and harness",
+      "If multiple DTCs appear: record full DTC list and conditions",
+      "Version note: applies to firmware v1.4.x (model_year 2024)"
+    ]
+  },
+  {
+    "dtc": "P1B22",
+    "description": "Thermal System / Cooling Fan Control",
+    "applicable": {
+      "model": "VF e34",
+      "model_year": 2022,
+      "firmware": "v1.0.x"
+    },
+    "possible_causes": [
+      "cooling fan failure",
+      "relay stuck",
+      "firmware control logic"
+    ],
+    "diagnostic_steps": [
+      "Run fan actuator test in service mode",
+      "Check relay/fuse and fan current draw",
+      "Verify firmware recommendations for thermal control",
+      "If no operating data: ask customer about fan noise/behavior",
+      "Version note: applies to firmware v1.0.x (model_year 2022)"
+    ]
+  },
+  {
+    "dtc": "P1B22",
+    "description": "Thermal System / Cooling Fan Control",
+    "applicable": {
+      "model": "VF8",
+      "model_year": 2023,
+      "firmware": "v1.1.x"
+    },
+    "possible_causes": [
+      "cooling fan failure",
+      "relay stuck",
+      "firmware control logic"
+    ],
+    "diagnostic_steps": [
+      "Run fan actuator test in service mode",
+      "Check relay/fuse and fan current draw",
+      "Verify firmware recommendations for thermal control",
+      "If no operating data: ask customer about fan noise/behavior",
+      "Version note: applies to firmware v1.1.x (model_year 2023)"
+    ]
+  },
+  {
+    "dtc": "P1B22",
+    "description": "Thermal System / Cooling Fan Control",
+    "applicable": {
+      "model": "VF8",
+      "model_year": 2023,
+      "firmware": "v1.2.x"
+    },
+    "possible_causes": [
+      "cooling fan failure",
+      "relay stuck",
+      "firmware control logic"
+    ],
+    "diagnostic_steps": [
+      "Run fan actuator test in service mode",
+      "Check relay/fuse and fan current draw",
+      "Verify firmware recommendations for thermal control",
+      "If no operating data: ask customer about fan noise/behavior",
+      "Version note: applies to firmware v1.2.x (model_year 2023)"
+    ]
+  },
+  {
+    "dtc": "P1B22",
+    "description": "Thermal System / Cooling Fan Control",
+    "applicable": {
+      "model": "VF8",
+      "model_year": 2024,
+      "firmware": "v1.3.x"
+    },
+    "possible_causes": [
+      "cooling fan failure",
+      "relay stuck",
+      "firmware control logic"
+    ],
+    "diagnostic_steps": [
+      "Run fan actuator test in service mode",
+      "Check relay/fuse and fan current draw",
+      "Verify firmware recommendations for thermal control",
+      "If no operating data: ask customer about fan noise/behavior",
+      "Version note: applies to firmware v1.3.x (model_year 2024)"
+    ]
+  },
+  {
+    "dtc": "P1B22",
+    "description": "Thermal System / Cooling Fan Control",
+    "applicable": {
+      "model": "VF8",
+      "model_year": 2024,
+      "firmware": "v1.4.x"
+    },
+    "possible_causes": [
+      "cooling fan failure",
+      "relay stuck",
+      "firmware control logic"
+    ],
+    "diagnostic_steps": [
+      "Run fan actuator test in service mode",
+      "Check relay/fuse and fan current draw",
+      "Verify firmware recommendations for thermal control",
+      "If no operating data: ask customer about fan noise/behavior",
+      "Version note: applies to firmware v1.4.x (model_year 2024)"
+    ]
+  }
+]

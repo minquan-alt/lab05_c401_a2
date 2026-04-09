@@ -1,0 +1,261 @@
+[GLOBAL RULES]
+
+1. Tất cả record BẮT BUỘC phải có:
+
+* model
+* model_year
+* firmware
+
+2. DTC phải nhất quán giữa:
+
+* repair_history
+* diagnostic_manual
+
+3. Chỉ được dùng các DTC sau:
+   [P0A80, P1A12, P0C01, P1B22]
+
+4. BẮT BUỘC có conflict cases:
+
+* same symptom → different DTC
+* same DTC → different fix (theo version)
+
+5. BẮT BUỘC có ambiguous cases:
+   → không đủ dữ liệu để kết luận
+   → system phải yêu cầu thêm thông tin
+
+6. BẮT BUỘC có failure cases:
+
+* chẩn đoán sai ban đầu (rework = true)
+* conflict giữa các nguồn dữ liệu
+* unknown case (không match history)
+
+7. Không được generate thông số nguy hiểm (HV, torque) nếu:
+
+* không có metadata rõ ràng
+* không có warning đi kèm
+
+---
+
+[DATA GENERATION TARGET]
+
+Repair History:
+
+* 50 records
+* 60% common cases
+* 20% ambiguous cases
+* 20% failure/rework cases
+
+Diagnostic Manual:
+
+* 20 records
+* mỗi DTC phải có ít nhất 2 version khác nhau
+
+Service Manual:
+
+* 15 documents
+* mỗi document phải có:
+
+  * metadata đầy đủ
+  * step-by-step
+  * ít nhất 1 warning
+
+---
+
+[DATA TYPES OVERVIEW]
+
+1. Repair History:
+   → nhanh, nhưng không đầy đủ
+   → dùng để match nhanh + estimate probability
+
+2. Diagnostic Manual:
+   → xử lý case mới / ambiguous
+   → là reasoning backbone
+
+3. Service Manual:
+   → hướng dẫn sửa chữa chính xác
+   → dùng cho RAG + citation
+
+---
+
+[STORAGE STRATEGY]
+
+Repair History + Diagnostic → Structured DB
+Service Manual → Vector DB (RAG)
+
+---
+
+[SCHEMA - MUST FOLLOW EXACTLY]
+
+1. Repair History:
+   {
+   "vehicle": {
+   "model": string,
+   "model_year": number,
+   "firmware": string
+   },
+   "symptom": string,
+   "observed_dtc": string,
+   "root_cause": string,
+   "fix": string,
+   "parts_replaced": list,
+   "time_to_repair_min": number,
+   "result": string,
+   "rework": boolean
+   }
+
+---
+
+2. Diagnostic Manual:
+   {
+   "dtc": string,
+   "description": string,
+   "applicable": {
+   "model": string,
+   "model_year": number,
+   "firmware": string
+   },
+   "possible_causes": list,
+   "diagnostic_steps": list
+   }
+
+---
+
+3. Service Manual (RAG):
+   {
+   "document_id": string,
+   "metadata": {
+   "model": string,
+   "model_year": number,
+   "firmware": string,
+   "section": string
+   },
+   "content": string
+   }
+
+---
+
+[FAILURE CASE REQUIREMENTS]
+
+Agent MUST generate:
+
+1. Missing metadata case:
+   → thiếu model_year hoặc firmware
+   → system phải hỏi lại
+
+2. Conflict case:
+   → cùng DTC nhưng khác repair theo version
+
+3. Ambiguous case:
+   → nhiều DTC possible
+   → không đủ thông tin để kết luận
+
+4. Wrong diagnosis case:
+   → repair_history có rework = true
+
+---
+
+[EXAMPLES]
+
+Repair History:
+
+{
+"vehicle": {
+"model": "VF8",
+"model_year": 2023,
+"firmware": "v1.2.1"
+},
+"symptom": "xe không sạc được tại trạm AC",
+"observed_dtc": "P1A12",
+"root_cause": "lỗi firmware BMS",
+"fix": "update firmware",
+"parts_replaced": [],
+"time_to_repair_min": 30,
+"result": "success",
+"rework": false
+}
+
+{
+"vehicle": {
+"model": "VF8",
+"model_year": 2022,
+"firmware": "v1.0.5"
+},
+"symptom": "xe không sạc được tại trạm AC",
+"observed_dtc": "P0A80",
+"root_cause": "pin suy giảm",
+"fix": "thay module pin",
+"parts_replaced": ["battery_module"],
+"time_to_repair_min": 180,
+"result": "success",
+"rework": false
+}
+
+{
+"vehicle": {
+"model": "VF e34",
+"model_year": 2023,
+"firmware": "v1.1.0"
+},
+"symptom": "xe báo lỗi pin, giảm công suất",
+"observed_dtc": "P0A80",
+"root_cause": "chẩn đoán sai ban đầu, thực tế do hệ thống làm mát",
+"fix": "thay quạt làm mát",
+"parts_replaced": ["cooling_fan"],
+"time_to_repair_min": 120,
+"result": "success",
+"rework": true
+}
+
+---
+
+Diagnostic Manual:
+
+{
+"dtc": "P0A80",
+"description": "Battery Pack Deterioration",
+"applicable": {
+"model": "VF8",
+"model_year": 2023,
+"firmware": "v1.2.x"
+},
+"possible_causes": [
+"battery degradation",
+"cooling system failure"
+],
+"diagnostic_steps": [
+"kiểm tra điện áp các cell",
+"kiểm tra nhiệt độ pin"
+]
+}
+
+---
+
+Service Manual:
+
+{
+"document_id": "doc_001",
+"metadata": {
+"model": "VF8",
+"model_year": 2023,
+"firmware": "v1.2.x",
+"section": "Battery System"
+},
+"content": "Step 1: Disconnect 12V battery\nStep 2: Disable HV system\nStep 3: Remove bolts (Torque: 45Nm)\nWarning: Ensure HV is disabled"
+}
+
+---
+
+[OUTPUT REQUIREMENT]
+
+Agent phải generate:
+
+* repair_history.json
+* diagnostic_manual.json
+* service_manual.json
+
+Tất cả phải:
+
+* đúng schema
+* có versioning
+* có conflict + ambiguous + failure cases
+* consistent DTC mapping giữa các file

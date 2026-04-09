@@ -1,0 +1,152 @@
+[
+  {
+    "document_id": "doc_001",
+    "metadata": {
+      "model": "VF8",
+      "model_year": 2024,
+      "firmware": "v1.0.x",
+      "section": "Battery System"
+    },
+    "content": "Section: Battery System\nStep 1: Power OFF vehicle and secure area\nStep 2: Disconnect 12V battery (negative terminal)\nStep 3: Wait 5 minutes\nStep 4: Disable HV system using service disconnect\nStep 5: Verify HV is disabled\nStep 6: Remove access panel bolts (Torque: 45Nm)\nWarning: High Voltage hazard. Ensure HV is disabled and wear PPE.\nApplies to: VF8 2024 (v1.0.x)"
+  },
+  {
+    "document_id": "doc_002",
+    "metadata": {
+      "model": "VF9",
+      "model_year": 2022,
+      "firmware": "v1.3.x",
+      "section": "Battery System"
+    },
+    "content": "Section: Battery System\nStep 1: Power OFF vehicle and secure area\nStep 2: Disconnect 12V battery (negative terminal)\nStep 3: Wait 5 minutes\nStep 4: Disable HV system using service disconnect\nStep 5: Verify HV is disabled\nStep 6: Remove access panel bolts (Torque: 45Nm)\nWarning: High Voltage hazard. Ensure HV is disabled and wear PPE.\nApplies to: VF9 2022 (v1.3.x)"
+  },
+  {
+    "document_id": "doc_003",
+    "metadata": {
+      "model": "VF8",
+      "model_year": 2023,
+      "firmware": "v1.2.x",
+      "section": "Battery System"
+    },
+    "content": "Section: Battery System\nStep 1: Power OFF vehicle and secure area\nStep 2: Disconnect 12V battery (negative terminal)\nStep 3: Wait 5 minutes\nStep 4: Disable HV system using service disconnect\nStep 5: Verify HV is disabled\nStep 6: Remove access panel bolts (Torque: 45Nm)\nWarning: High Voltage hazard. Ensure HV is disabled and wear PPE.\nApplies to: VF8 2023 (v1.2.x)"
+  },
+  {
+    "document_id": "doc_004",
+    "metadata": {
+      "model": "VF8",
+      "model_year": 2022,
+      "firmware": "v1.3.x",
+      "section": "Charging System"
+    },
+    "content": "Section: Charging System\nStep 1: Power OFF vehicle and secure area\nStep 2: Disconnect 12V battery (negative terminal)\nStep 3: Wait 5 minutes\nStep 4: Visual inspection and connector check\nStep 5: Reconnect 12V and run functional test\nWarning: Follow safety procedures to avoid short circuits.\nApplies to: VF8 2022 (v1.3.x)"
+  },
+  {
+    "document_id": "doc_005",
+    "metadata": {
+      "model": "VF e34",
+      "model_year": 2023,
+      "firmware": "v1.1.x",
+      "section": "Charging System"
+    },
+    "content": "Section: Charging System\nStep 1: Power OFF vehicle and secure area\nStep 2: Disconnect 12V battery (negative terminal)\nStep 3: Wait 5 minutes\nStep 4: Visual inspection and connector check\nStep 5: Reconnect 12V and run functional test\nWarning: Follow safety procedures to avoid short circuits.\nApplies to: VF e34 2023 (v1.1.x)"
+  },
+  {
+    "document_id": "doc_006",
+    "metadata": {
+      "model": "VF8",
+      "model_year": 2023,
+      "firmware": "v1.0.x",
+      "section": "Charging System"
+    },
+    "content": "Section: Charging System\nStep 1: Power OFF vehicle and secure area\nStep 2: Disconnect 12V battery (negative terminal)\nStep 3: Wait 5 minutes\nStep 4: Visual inspection and connector check\nStep 5: Reconnect 12V and run functional test\nWarning: Follow safety procedures to avoid short circuits.\nApplies to: VF8 2023 (v1.0.x)"
+  },
+  {
+    "document_id": "doc_007",
+    "metadata": {
+      "model": "VF8",
+      "model_year": 2023,
+      "firmware": "v1.0.x",
+      "section": "Inverter & Motor"
+    },
+    "content": "Section: Inverter & Motor\nStep 1: Power OFF vehicle and secure area\nStep 2: Disconnect 12V battery (negative terminal)\nStep 3: Wait 5 minutes\nStep 4: Disable HV system using service disconnect\nStep 5: Verify HV is disabled\nStep 6: Remove access panel bolts (Torque: 45Nm)\nWarning: High Voltage hazard. Ensure HV is disabled and wear PPE.\nApplies to: VF8 2023 (v1.0.x)"
+  },
+  {
+    "document_id": "doc_008",
+    "metadata": {
+      "model": "VF e34",
+      "model_year": 2023,
+      "firmware": "v1.2.x",
+      "section": "Inverter & Motor"
+    },
+    "content": "Section: Inverter & Motor\nStep 1: Power OFF vehicle and secure area\nStep 2: Disconnect 12V battery (negative terminal)\nStep 3: Wait 5 minutes\nStep 4: Disable HV system using service disconnect\nStep 5: Verify HV is disabled\nStep 6: Remove access panel bolts (Torque: 45Nm)\nWarning: High Voltage hazard. Ensure HV is disabled and wear PPE.\nApplies to: VF e34 2023 (v1.2.x)"
+  },
+  {
+    "document_id": "doc_009",
+    "metadata": {
+      "model": "VF8",
+      "model_year": 2024,
+      "firmware": "v1.3.x",
+      "section": "Inverter & Motor"
+    },
+    "content": "Section: Inverter & Motor\nStep 1: Power OFF vehicle and secure area\nStep 2: Disconnect 12V battery (negative terminal)\nStep 3: Wait 5 minutes\nStep 4: Disable HV system using service disconnect\nStep 5: Verify HV is disabled\nStep 6: Remove access panel bolts (Torque: 45Nm)\nWarning: High Voltage hazard. Ensure HV is disabled and wear PPE.\nApplies to: VF8 2024 (v1.3.x)"
+  },
+  {
+    "document_id": "doc_010",
+    "metadata": {
+      "model": "VF9",
+      "model_year": 2022,
+      "firmware": "v1.3.x",
+      "section": "Thermal Management"
+    },
+    "content": "Section: Thermal Management\nStep 1: Power OFF vehicle and secure area\nStep 2: Disconnect 12V battery (negative terminal)\nStep 3: Wait 5 minutes\nStep 4: Visual inspection and connector check\nStep 5: Reconnect 12V and run functional test\nWarning: Follow safety procedures to avoid short circuits.\nApplies to: VF9 2022 (v1.3.x)"
+  },
+  {
+    "document_id": "doc_011",
+    "metadata": {
+      "model": "VF8",
+      "model_year": 2024,
+      "firmware": "v1.2.x",
+      "section": "Thermal Management"
+    },
+    "content": "Section: Thermal Management\nStep 1: Power OFF vehicle and secure area\nStep 2: Disconnect 12V battery (negative terminal)\nStep 3: Wait 5 minutes\nStep 4: Visual inspection and connector check\nStep 5: Reconnect 12V and run functional test\nWarning: Follow safety procedures to avoid short circuits.\nApplies to: VF8 2024 (v1.2.x)"
+  },
+  {
+    "document_id": "doc_012",
+    "metadata": {
+      "model": "VF9",
+      "model_year": 2024,
+      "firmware": "v1.2.x",
+      "section": "Thermal Management"
+    },
+    "content": "Section: Thermal Management\nStep 1: Power OFF vehicle and secure area\nStep 2: Disconnect 12V battery (negative terminal)\nStep 3: Wait 5 minutes\nStep 4: Visual inspection and connector check\nStep 5: Reconnect 12V and run functional test\nWarning: Follow safety procedures to avoid short circuits.\nApplies to: VF9 2024 (v1.2.x)"
+  },
+  {
+    "document_id": "doc_013",
+    "metadata": {
+      "model": "VF9",
+      "model_year": 2022,
+      "firmware": "v1.0.x",
+      "section": "Diagnostics & DTC"
+    },
+    "content": "Section: Diagnostics & DTC\nStep 1: Power OFF vehicle and secure area\nStep 2: Disconnect 12V battery (negative terminal)\nStep 3: Wait 5 minutes\nStep 4: Visual inspection and connector check\nStep 5: Reconnect 12V and run functional test\nWarning: Follow safety procedures to avoid short circuits.\nApplies to: VF9 2022 (v1.0.x)"
+  },
+  {
+    "document_id": "doc_014",
+    "metadata": {
+      "model": "VF8",
+      "model_year": 2024,
+      "firmware": "v1.1.x",
+      "section": "Diagnostics & DTC"
+    },
+    "content": "Section: Diagnostics & DTC\nStep 1: Power OFF vehicle and secure area\nStep 2: Disconnect 12V battery (negative terminal)\nStep 3: Wait 5 minutes\nStep 4: Visual inspection and connector check\nStep 5: Reconnect 12V and run functional test\nWarning: Follow safety procedures to avoid short circuits.\nApplies to: VF8 2024 (v1.1.x)"
+  },
+  {
+    "document_id": "doc_015",
+    "metadata": {
+      "model": "VF e34",
+      "model_year": 2022,
+      "firmware": "v1.1.x",
+      "section": "Diagnostics & DTC"
+    },
+    "content": "Section: Diagnostics & DTC\nStep 1: Power OFF vehicle and secure area\nStep 2: Disconnect 12V battery (negative terminal)\nStep 3: Wait 5 minutes\nStep 4: Visual inspection and connector check\nStep 5: Reconnect 12V and run functional test\nWarning: Follow safety procedures to avoid short circuits.\nApplies to: VF e34 2022 (v1.1.x)"
+  }
+]

@@ -1,0 +1,804 @@
+[
+  {
+    "vehicle": {
+      "model": "VF8",
+      "model_year": 2023,
+      "firmware": "v1.2.1"
+    },
+    "symptom": "cannot charge at AC station",
+    "observed_dtc": "P1A12",
+    "root_cause": "BMS firmware issue",
+    "fix": "update firmware",
+    "parts_replaced": [],
+    "time_to_repair_min": 30,
+    "result": "success",
+    "rework": false
+  },
+  {
+    "vehicle": {
+      "model": "VF8",
+      "model_year": 2022,
+      "firmware": "v1.0.5"
+    },
+    "symptom": "cannot charge at AC station",
+    "observed_dtc": "P0A80",
+    "root_cause": "battery degradation",
+    "fix": "replace battery module",
+    "parts_replaced": [
+      "battery_module"
+    ],
+    "time_to_repair_min": 180,
+    "result": "success",
+    "rework": false
+  },
+  {
+    "vehicle": {
+      "model": "VF e34",
+      "model_year": 2023,
+      "firmware": "v1.1.0"
+    },
+    "symptom": "battery warning and reduced power",
+    "observed_dtc": "P0A80",
+    "root_cause": "cooling system issue (version-dependent behavior)",
+    "fix": "replace cooling fan",
+    "parts_replaced": [
+      "cooling_fan"
+    ],
+    "time_to_repair_min": 120,
+    "result": "success",
+    "rework": false
+  },
+  {
+    "vehicle": {
+      "model": "VF9",
+      "model_year": 2024,
+      "firmware": "v1.3.0"
+    },
+    "symptom": "battery warning and reduced power",
+    "observed_dtc": "P0A80",
+    "root_cause": "battery module deterioration",
+    "fix": "replace battery module",
+    "parts_replaced": [
+      "battery_module"
+    ],
+    "time_to_repair_min": 200,
+    "result": "success",
+    "rework": false
+  },
+  {
+    "vehicle": {
+      "model": "VF e34",
+      "model_year": 2023,
+      "firmware": "v1.3.0"
+    },
+    "symptom": "weak acceleration and slight vibration",
+    "observed_dtc": "P0C01",
+    "root_cause": "rotor position sensor drift",
+    "fix": "recalibrate sensor",
+    "parts_replaced": [
+      "position_sensor"
+    ],
+    "time_to_repair_min": 90,
+    "result": "success",
+    "rework": false
+  },
+  {
+    "vehicle": {
+      "model": "VF8",
+      "model_year": 2023,
+      "firmware": "v1.2.1"
+    },
+    "symptom": "battery warning and reduced power",
+    "observed_dtc": "P0A80",
+    "root_cause": "cell imbalance",
+    "fix": "balance cells and inspect cooling",
+    "parts_replaced": [],
+    "time_to_repair_min": 120,
+    "result": "success",
+    "rework": false
+  },
+  {
+    "vehicle": {
+      "model": "VF9",
+      "model_year": 2023,
+      "firmware": "v1.0.5"
+    },
+    "symptom": "cooling fan runs continuously",
+    "observed_dtc": "P1B22",
+    "root_cause": "fan relay stuck",
+    "fix": "replace fan relay",
+    "parts_replaced": [
+      "fan_relay"
+    ],
+    "time_to_repair_min": 40,
+    "result": "success",
+    "rework": false
+  },
+  {
+    "vehicle": {
+      "model": "VF9",
+      "model_year": 2024,
+      "firmware": "v1.1.0"
+    },
+    "symptom": "cooling fan runs continuously",
+    "observed_dtc": "P1B22",
+    "root_cause": "fan relay stuck",
+    "fix": "replace fan relay",
+    "parts_replaced": [
+      "fan_relay"
+    ],
+    "time_to_repair_min": 40,
+    "result": "success",
+    "rework": false
+  },
+  {
+    "vehicle": {
+      "model": "VF e34",
+      "model_year": 2023,
+      "firmware": "v1.2.1"
+    },
+    "symptom": "cooling fan runs continuously",
+    "observed_dtc": "P1B22",
+    "root_cause": "fan relay stuck",
+    "fix": "replace fan relay",
+    "parts_replaced": [
+      "fan_relay"
+    ],
+    "time_to_repair_min": 40,
+    "result": "success",
+    "rework": false
+  },
+  {
+    "vehicle": {
+      "model": "VF9",
+      "model_year": 2023,
+      "firmware": "v1.0.5"
+    },
+    "symptom": "cooling fan runs continuously",
+    "observed_dtc": "P1B22",
+    "root_cause": "fan relay stuck",
+    "fix": "replace fan relay",
+    "parts_replaced": [
+      "fan_relay"
+    ],
+    "time_to_repair_min": 40,
+    "result": "success",
+    "rework": false
+  },
+  {
+    "vehicle": {
+      "model": "VF8",
+      "model_year": 2023,
+      "firmware": "v1.3.0"
+    },
+    "symptom": "cooling fan runs continuously",
+    "observed_dtc": "P1B22",
+    "root_cause": "fan relay stuck",
+    "fix": "replace fan relay",
+    "parts_replaced": [
+      "fan_relay"
+    ],
+    "time_to_repair_min": 40,
+    "result": "success",
+    "rework": false
+  },
+  {
+    "vehicle": {
+      "model": "VF8",
+      "model_year": 2022,
+      "firmware": "v1.2.1"
+    },
+    "symptom": "battery warning and reduced power",
+    "observed_dtc": "P0A80",
+    "root_cause": "cell imbalance",
+    "fix": "balance cells and inspect cooling",
+    "parts_replaced": [],
+    "time_to_repair_min": 120,
+    "result": "success",
+    "rework": false
+  },
+  {
+    "vehicle": {
+      "model": "VF9",
+      "model_year": 2023,
+      "firmware": "v1.3.0"
+    },
+    "symptom": "cooling fan runs continuously",
+    "observed_dtc": "P1B22",
+    "root_cause": "fan relay stuck",
+    "fix": "replace fan relay",
+    "parts_replaced": [
+      "fan_relay"
+    ],
+    "time_to_repair_min": 40,
+    "result": "success",
+    "rework": false
+  },
+  {
+    "vehicle": {
+      "model": "VF8",
+      "model_year": 2023,
+      "firmware": "v1.1.0"
+    },
+    "symptom": "cannot charge at AC station",
+    "observed_dtc": "P1A12",
+    "root_cause": "connector oxidation",
+    "fix": "clean/replace connector pins",
+    "parts_replaced": [
+      "charge_port_pin"
+    ],
+    "time_to_repair_min": 60,
+    "result": "success",
+    "rework": false
+  },
+  {
+    "vehicle": {
+      "model": "VF9",
+      "model_year": 2024,
+      "firmware": "v1.2.1"
+    },
+    "symptom": "cooling fan runs continuously",
+    "observed_dtc": "P1B22",
+    "root_cause": "fan relay stuck",
+    "fix": "replace fan relay",
+    "parts_replaced": [
+      "fan_relay"
+    ],
+    "time_to_repair_min": 40,
+    "result": "success",
+    "rework": false
+  },
+  {
+    "vehicle": {
+      "model": "VF9",
+      "model_year": 2023,
+      "firmware": "v1.2.1"
+    },
+    "symptom": "cannot charge at AC station",
+    "observed_dtc": "P1A12",
+    "root_cause": "connector oxidation",
+    "fix": "clean/replace connector pins",
+    "parts_replaced": [
+      "charge_port_pin"
+    ],
+    "time_to_repair_min": 60,
+    "result": "success",
+    "rework": false
+  },
+  {
+    "vehicle": {
+      "model": "VF8",
+      "model_year": 2024,
+      "firmware": "v1.3.0"
+    },
+    "symptom": "cooling fan runs continuously",
+    "observed_dtc": "P1B22",
+    "root_cause": "fan relay stuck",
+    "fix": "replace fan relay",
+    "parts_replaced": [
+      "fan_relay"
+    ],
+    "time_to_repair_min": 40,
+    "result": "success",
+    "rework": false
+  },
+  {
+    "vehicle": {
+      "model": "VF8",
+      "model_year": 2022,
+      "firmware": "v1.1.0"
+    },
+    "symptom": "weak acceleration and slight vibration",
+    "observed_dtc": "P0C01",
+    "root_cause": "rotor position sensor drift",
+    "fix": "recalibrate sensor",
+    "parts_replaced": [
+      "position_sensor"
+    ],
+    "time_to_repair_min": 90,
+    "result": "success",
+    "rework": false
+  },
+  {
+    "vehicle": {
+      "model": "VF9",
+      "model_year": 2023,
+      "firmware": "v1.0.5"
+    },
+    "symptom": "cooling fan runs continuously",
+    "observed_dtc": "P1B22",
+    "root_cause": "fan relay stuck",
+    "fix": "replace fan relay",
+    "parts_replaced": [
+      "fan_relay"
+    ],
+    "time_to_repair_min": 40,
+    "result": "success",
+    "rework": false
+  },
+  {
+    "vehicle": {
+      "model": "VF e34",
+      "model_year": 2024,
+      "firmware": "v1.3.0"
+    },
+    "symptom": "cannot charge at AC station",
+    "observed_dtc": "P1A12",
+    "root_cause": "connector oxidation",
+    "fix": "clean/replace connector pins",
+    "parts_replaced": [
+      "charge_port_pin"
+    ],
+    "time_to_repair_min": 60,
+    "result": "success",
+    "rework": false
+  },
+  {
+    "vehicle": {
+      "model": "VF9",
+      "model_year": 2022,
+      "firmware": "v1.0.5"
+    },
+    "symptom": "battery warning and reduced power",
+    "observed_dtc": "P0A80",
+    "root_cause": "cell imbalance",
+    "fix": "balance cells and inspect cooling",
+    "parts_replaced": [],
+    "time_to_repair_min": 120,
+    "result": "success",
+    "rework": false
+  },
+  {
+    "vehicle": {
+      "model": "VF9",
+      "model_year": 2023,
+      "firmware": "v1.0.5"
+    },
+    "symptom": "battery warning and reduced power",
+    "observed_dtc": "P0A80",
+    "root_cause": "cell imbalance",
+    "fix": "balance cells and inspect cooling",
+    "parts_replaced": [],
+    "time_to_repair_min": 120,
+    "result": "success",
+    "rework": false
+  },
+  {
+    "vehicle": {
+      "model": "VF e34",
+      "model_year": 2022,
+      "firmware": "v1.3.0"
+    },
+    "symptom": "battery warning and reduced power",
+    "observed_dtc": "P0A80",
+    "root_cause": "cell imbalance",
+    "fix": "balance cells and inspect cooling",
+    "parts_replaced": [],
+    "time_to_repair_min": 120,
+    "result": "success",
+    "rework": false
+  },
+  {
+    "vehicle": {
+      "model": "VF9",
+      "model_year": 2024,
+      "firmware": "v1.2.1"
+    },
+    "symptom": "weak acceleration and slight vibration",
+    "observed_dtc": "P0C01",
+    "root_cause": "rotor position sensor drift",
+    "fix": "recalibrate sensor",
+    "parts_replaced": [
+      "position_sensor"
+    ],
+    "time_to_repair_min": 90,
+    "result": "success",
+    "rework": false
+  },
+  {
+    "vehicle": {
+      "model": "VF9",
+      "model_year": 2022,
+      "firmware": "v1.2.1"
+    },
+    "symptom": "cooling fan runs continuously",
+    "observed_dtc": "P1B22",
+    "root_cause": "fan relay stuck",
+    "fix": "replace fan relay",
+    "parts_replaced": [
+      "fan_relay"
+    ],
+    "time_to_repair_min": 40,
+    "result": "success",
+    "rework": false
+  },
+  {
+    "vehicle": {
+      "model": "VF8",
+      "model_year": 2023,
+      "firmware": "v1.1.0"
+    },
+    "symptom": "cooling fan runs continuously",
+    "observed_dtc": "P1B22",
+    "root_cause": "fan relay stuck",
+    "fix": "replace fan relay",
+    "parts_replaced": [
+      "fan_relay"
+    ],
+    "time_to_repair_min": 40,
+    "result": "success",
+    "rework": false
+  },
+  {
+    "vehicle": {
+      "model": "VF9",
+      "model_year": 2023,
+      "firmware": "v1.3.0"
+    },
+    "symptom": "weak acceleration and slight vibration",
+    "observed_dtc": "P0C01",
+    "root_cause": "rotor position sensor drift",
+    "fix": "recalibrate sensor",
+    "parts_replaced": [
+      "position_sensor"
+    ],
+    "time_to_repair_min": 90,
+    "result": "success",
+    "rework": false
+  },
+  {
+    "vehicle": {
+      "model": "VF8",
+      "model_year": 2023,
+      "firmware": "v1.2.1"
+    },
+    "symptom": "weak acceleration and slight vibration",
+    "observed_dtc": "P0C01",
+    "root_cause": "rotor position sensor drift",
+    "fix": "recalibrate sensor",
+    "parts_replaced": [
+      "position_sensor"
+    ],
+    "time_to_repair_min": 90,
+    "result": "success",
+    "rework": false
+  },
+  {
+    "vehicle": {
+      "model": "VF8",
+      "model_year": 2022,
+      "firmware": "v1.0.5"
+    },
+    "symptom": "cooling fan runs continuously",
+    "observed_dtc": "P1B22",
+    "root_cause": "fan relay stuck",
+    "fix": "replace fan relay",
+    "parts_replaced": [
+      "fan_relay"
+    ],
+    "time_to_repair_min": 40,
+    "result": "success",
+    "rework": false
+  },
+  {
+    "vehicle": {
+      "model": "VF9",
+      "model_year": 2023,
+      "firmware": "v1.0.5"
+    },
+    "symptom": "weak acceleration and slight vibration",
+    "observed_dtc": "P0C01",
+    "root_cause": "rotor position sensor drift",
+    "fix": "recalibrate sensor",
+    "parts_replaced": [
+      "position_sensor"
+    ],
+    "time_to_repair_min": 90,
+    "result": "success",
+    "rework": false
+  },
+  {
+    "vehicle": {
+      "model": "VF8",
+      "model_year": 2022,
+      "firmware": "v1.3.0"
+    },
+    "symptom": "short power drop",
+    "observed_dtc": "P0C01",
+    "root_cause": "insufficient data; could be inverter temp or harness (ambiguous: multiple DTC possible: P0A80, P1A12, P0C01, P1B22)",
+    "fix": "request conditions + read live data",
+    "parts_replaced": [],
+    "time_to_repair_min": 10,
+    "result": "needs_more_info",
+    "rework": false
+  },
+  {
+    "vehicle": {
+      "model": "VF8",
+      "model_year": 2023,
+      "firmware": "v1.3.0"
+    },
+    "symptom": "short power drop",
+    "observed_dtc": "P0C01",
+    "root_cause": "insufficient data; could be inverter temp or harness (ambiguous: multiple DTC possible: P0A80, P1A12, P0C01, P1B22)",
+    "fix": "request conditions + read live data",
+    "parts_replaced": [],
+    "time_to_repair_min": 10,
+    "result": "needs_more_info",
+    "rework": false
+  },
+  {
+    "vehicle": {
+      "model": "VF9",
+      "model_year": 2024,
+      "firmware": "v1.1.0"
+    },
+    "symptom": "warning lamp on, intermittent",
+    "observed_dtc": "P0A80",
+    "root_cause": "insufficient data; could be battery or cooling (ambiguous: multiple DTC possible: P0A80, P1A12, P0C01, P1B22)",
+    "fix": "request more info + measure temps/voltages",
+    "parts_replaced": [],
+    "time_to_repair_min": 10,
+    "result": "needs_more_info",
+    "rework": false
+  },
+  {
+    "vehicle": {
+      "model": "VF e34",
+      "model_year": 2023,
+      "firmware": "v1.2.1"
+    },
+    "symptom": "short power drop",
+    "observed_dtc": "P0C01",
+    "root_cause": "insufficient data; could be inverter temp or harness (ambiguous: multiple DTC possible: P0A80, P1A12, P0C01, P1B22)",
+    "fix": "request conditions + read live data",
+    "parts_replaced": [],
+    "time_to_repair_min": 10,
+    "result": "needs_more_info",
+    "rework": false
+  },
+  {
+    "vehicle": {
+      "model": "VF9",
+      "model_year": 2023,
+      "firmware": "v1.0.5"
+    },
+    "symptom": "charge error appears then clears",
+    "observed_dtc": "P1A12",
+    "root_cause": "insufficient data; could be charger or firmware (ambiguous: multiple DTC possible: P0A80, P1A12, P0C01, P1B22)",
+    "fix": "request charger details + check logs",
+    "parts_replaced": [],
+    "time_to_repair_min": 10,
+    "result": "needs_more_info",
+    "rework": false
+  },
+  {
+    "vehicle": {
+      "model": "VF8",
+      "model_year": 2022,
+      "firmware": "v1.2.1"
+    },
+    "symptom": "warning lamp on, intermittent",
+    "observed_dtc": "P0A80",
+    "root_cause": "insufficient data; could be battery or cooling (ambiguous: multiple DTC possible: P0A80, P1A12, P0C01, P1B22)",
+    "fix": "request more info + measure temps/voltages",
+    "parts_replaced": [],
+    "time_to_repair_min": 10,
+    "result": "needs_more_info",
+    "rework": false
+  },
+  {
+    "vehicle": {
+      "model": "VF9",
+      "model_year": 2024,
+      "firmware": "v1.1.0"
+    },
+    "symptom": "warning lamp on, intermittent",
+    "observed_dtc": "P0A80",
+    "root_cause": "insufficient data; could be battery or cooling (ambiguous: multiple DTC possible: P0A80, P1A12, P0C01, P1B22)",
+    "fix": "request more info + measure temps/voltages",
+    "parts_replaced": [],
+    "time_to_repair_min": 10,
+    "result": "needs_more_info",
+    "rework": false
+  },
+  {
+    "vehicle": {
+      "model": "VF8",
+      "model_year": 2022,
+      "firmware": "v1.0.5"
+    },
+    "symptom": "short power drop",
+    "observed_dtc": "P0C01",
+    "root_cause": "insufficient data; could be inverter temp or harness (ambiguous: multiple DTC possible: P0A80, P1A12, P0C01, P1B22)",
+    "fix": "request conditions + read live data",
+    "parts_replaced": [],
+    "time_to_repair_min": 10,
+    "result": "needs_more_info",
+    "rework": false
+  },
+  {
+    "vehicle": {
+      "model": "VF9",
+      "model_year": 2022,
+      "firmware": "v1.1.0"
+    },
+    "symptom": "short power drop",
+    "observed_dtc": "P0C01",
+    "root_cause": "insufficient data; could be inverter temp or harness (ambiguous: multiple DTC possible: P0A80, P1A12, P0C01, P1B22)",
+    "fix": "request conditions + read live data",
+    "parts_replaced": [],
+    "time_to_repair_min": 10,
+    "result": "needs_more_info",
+    "rework": false
+  },
+  {
+    "vehicle": {
+      "model": "VF8",
+      "model_year": 2023,
+      "firmware": "v1.0.5"
+    },
+    "symptom": "warning lamp on, intermittent",
+    "observed_dtc": "P0A80",
+    "root_cause": "insufficient data; could be battery or cooling (ambiguous: multiple DTC possible: P0A80, P1A12, P0C01, P1B22)",
+    "fix": "request more info + measure temps/voltages",
+    "parts_replaced": [],
+    "time_to_repair_min": 10,
+    "result": "needs_more_info",
+    "rework": false
+  },
+  {
+    "vehicle": {
+      "model": "VF9",
+      "model_year": 2022,
+      "firmware": "v1.2.1"
+    },
+    "symptom": "battery warning and reduced power",
+    "observed_dtc": "P0A80",
+    "root_cause": "wrong initial diagnosis; actual cooling fan failure",
+    "fix": "replace cooling fan",
+    "parts_replaced": [
+      "cooling_fan"
+    ],
+    "time_to_repair_min": 120,
+    "result": "success",
+    "rework": true
+  },
+  {
+    "vehicle": {
+      "model": "VF9",
+      "model_year": 2023,
+      "firmware": "v1.1.0"
+    },
+    "symptom": "cannot charge at AC station",
+    "observed_dtc": "P1A12",
+    "root_cause": "wrong initial diagnosis; actual charge port pin corrosion",
+    "fix": "replace charge port pins",
+    "parts_replaced": [
+      "charge_port_pin"
+    ],
+    "time_to_repair_min": 90,
+    "result": "success",
+    "rework": true
+  },
+  {
+    "vehicle": {
+      "model": "VF9",
+      "model_year": 2022,
+      "firmware": "v1.3.0"
+    },
+    "symptom": "cannot charge at AC station",
+    "observed_dtc": "P1A12",
+    "root_cause": "data conflict between repair notes and diagnostic manual for this version",
+    "fix": "escalate + collect logs",
+    "parts_replaced": [],
+    "time_to_repair_min": 20,
+    "result": "failed",
+    "rework": false
+  },
+  {
+    "vehicle": {
+      "model": "VF8",
+      "model_year": 2023,
+      "firmware": "v1.3.0"
+    },
+    "symptom": "weak acceleration with whining noise",
+    "observed_dtc": "P0C01",
+    "root_cause": "unknown case (no close match in history)",
+    "fix": "escalate to engineering",
+    "parts_replaced": [],
+    "time_to_repair_min": 15,
+    "result": "unknown_case",
+    "rework": false
+  },
+  {
+    "vehicle": {
+      "model": "VF8",
+      "model_year": 2022,
+      "firmware": "v1.0.5"
+    },
+    "symptom": "cooling fan runs continuously",
+    "observed_dtc": "P1B22",
+    "root_cause": "relay test inconsistent with symptom (possible harness issue)",
+    "fix": "inspect harness and re-test",
+    "parts_replaced": [],
+    "time_to_repair_min": 45,
+    "result": "failed",
+    "rework": false
+  },
+  {
+    "vehicle": {
+      "model": "VF9",
+      "model_year": 2023,
+      "firmware": "v1.2.1"
+    },
+    "symptom": "short power drop",
+    "observed_dtc": "P0C01",
+    "root_cause": "intermittent harness contact; root cause not confirmed",
+    "fix": "request more logs + inspect connectors",
+    "parts_replaced": [],
+    "time_to_repair_min": 25,
+    "result": "unknown_case",
+    "rework": false
+  },
+  {
+    "vehicle": {
+      "model": "VF e34",
+      "model_year": 2023,
+      "firmware": "v1.3.0"
+    },
+    "symptom": "battery warning and reduced power",
+    "observed_dtc": "P0A80",
+    "root_cause": "cell voltage delta borderline; cannot conclude",
+    "fix": "request more info + extended monitoring",
+    "parts_replaced": [],
+    "time_to_repair_min": 30,
+    "result": "needs_more_info",
+    "rework": false
+  },
+  {
+    "vehicle": {
+      "model": "VF9",
+      "model_year": 2022,
+      "firmware": "v1.0.5"
+    },
+    "symptom": "charge error appears then clears",
+    "observed_dtc": "P1A12",
+    "root_cause": "charger handshake unclear; cannot reproduce",
+    "fix": "schedule reproduction test",
+    "parts_replaced": [],
+    "time_to_repair_min": 30,
+    "result": "unknown_case",
+    "rework": false
+  },
+  {
+    "vehicle": {
+      "model": "VF8",
+      "model_year": 2023,
+      "firmware": "v1.2.1"
+    },
+    "symptom": "cooling fan runs continuously",
+    "observed_dtc": "P1B22",
+    "root_cause": "firmware control logic suspected; needs version confirmation",
+    "fix": "confirm firmware + apply update if applicable",
+    "parts_replaced": [],
+    "time_to_repair_min": 20,
+    "result": "needs_more_info",
+    "rework": false
+  },
+  {
+    "vehicle": {
+      "model": "VF8",
+      "model_year": 0,
+      "firmware": ""
+    },
+    "symptom": "missing metadata for diagnosis",
+    "observed_dtc": "P1A12",
+    "root_cause": "missing metadata case; system must ask for model_year and firmware",
+    "fix": "request model_year + firmware before continuing",
+    "parts_replaced": [],
+    "time_to_repair_min": 5,
+    "result": "needs_more_info",
+    "rework": false
+  }
+]

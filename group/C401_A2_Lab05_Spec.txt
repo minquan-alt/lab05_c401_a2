@@ -171,5 +171,3 @@ Cost > Benefit (2 tháng)
 Nếu đạt được accuracy và trust, đây là bài toán ROI dương + có data moat mạnh.
  Rủi ro lớn nhất không phải cost — mà là hallucination trong hệ thống safety-critical.
 
-
-
